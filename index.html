@@ -959,9 +959,11 @@
     <div class="modal" id="requestModal">
         <div class="modal-content">
             <div class="modal-header">
-                <div class="modal-title">📋 Заявка на просмотр</div>
-                <button class="close-btn" onclick="closeRequestModal()">✕</button>
-                       <div class="form-group">
+               <div class="modal-header">
+    <div class="modal-title">📋 Заявка на просмотр</div>
+    <button class="close-btn" onclick="closeRequestModal()">✕</button>
+</div>
+<div class="form-group">
                 <label>Имя</label>
                 <input type="text" id="reqName" placeholder="Ваше имя">
             </div>
@@ -1559,7 +1561,6 @@
                 <button class="btn btn-primary btn-small" onclick="toggleRegisterModal()">Регистрация</button>`;
         }
     }
-      <script>
     // ==================== ДЕМО ДАННЫЕ ====================
     function initDemoData() {
         if (getData('demoInited').length === 0 || getData('demoInited') === false) {
@@ -2006,7 +2007,7 @@
         const d = new Date(iso);
         return d.toLocaleDateString('ru-RU', { day:'2-digit', month:'long', year:'numeric' });
     }
-       <script>
+      
     // ==================== ЛИЧНЫЙ КАБИНЕТ ====================
     function renderCabinet() {
         if (!currentUser) {
@@ -2536,9 +2537,8 @@
                     <div>
                         <strong>${getPropertyEmoji(p.type)} ${p.title}</strong>
                         <span class="badge ${p.status==='active'?'badge-success':p.status==='sold'?'badge-danger':'badge-warning'}" style="margin-left:8px;">
-                            ${p.status==='active'?'Активен       
-                                ${p.status==='active'?'Активен':p.status==='sold'?'Продан':'На проверке'}
-                        </span>
+                            ${p.status==='active'?'Активен':p.status==='sold'?'Продан':'На проверке'}
+        </span>
                         ${p.verified ? '<span class="badge badge-success">✅ Проверен</span>' : ''}<br>
                         <span style="font-size:0.85rem;color:var(--text-muted);">📍 ${p.city} | ${p.type} | ${p.area} м² | ${formatPrice(p.price)}</span>
                     </div>
