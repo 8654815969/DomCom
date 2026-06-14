@@ -301,9 +301,9 @@ footer{background:#0f0303;padding:72px 60px 36px;}
 .toast{position:fixed;bottom:32px;right:32px;background:#27ae60;color:#fff;padding:14px 24px;font-size:12px;letter-spacing:1px;z-index:9999;opacity:0;transform:translateY(10px);transition:all 0.3s;pointer-events:none;}
 .toast.show{opacity:1;transform:translateY(0);}
 
-/* ========== PAGE TRANSITIONS ========== */
 .page{display:none;}
 .page.active{display:block;}
+footer{display:none;}
 
 /* ========== PROPERTY PAGES ========== */
 .prop-page-hero{padding:140px 60px 40px;background:#fff;border-bottom:1px solid #efefef;}
@@ -535,12 +535,10 @@ footer{background:#0f0303;padding:72px 60px 36px;}
   </div>
   <div class="search-bar">
     <div class="sg"><label>Район</label>
-      <select id="rent-district">
-        <option value="">Все районы</option>
-        <option>Алмалинский</option><option>Бостандыкский</option>
-        <option>Медеуский</option><option>Наурызбайский</option><option>Турксибский</option>
-      </select>
-    </div>
+  <select id="rent-district">
+    <option value="">Все районы</option>
+  </select>
+</div>
     <div class="sg"><label>Комнат</label>
       <select id="rent-rooms">
         <option value="">Любое</option>
@@ -587,16 +585,14 @@ footer{background:#0f0303;padding:72px 60px 36px;}
 <div class="page" id="page-sale">
   <div class="prop-page-hero">
     <h1>Купить квартиру</h1>
-    <p>Комиссия 1.5% · Прозрачная сделка · Юридическая поддержка</p>
+    <p>Комиссия 3% · Прозрачная сделка · Юридическая поддержка</p>
   </div>
   <div class="search-bar">
     <div class="sg"><label>Район</label>
-      <select id="sale-district">
-        <option value="">Все районы</option>
-        <option>Алмалинский</option><option>Бостандыкский</option>
-        <option>Медеуский</option><option>Наурызбайский</option>
-      </select>
-    </div>
+  <select id="sale-district">
+    <option value="">Все районы</option>
+  </select>
+</div>
     <div class="sg"><label>Комнат</label>
       <select id="sale-rooms">
         <option value="">Любое</option>
@@ -616,7 +612,7 @@ footer{background:#0f0303;padding:72px 60px 36px;}
 </div>
 
 <!-- FOOTER -->
-<footer>
+<footer id="main-footer">
   <div class="footer-grid">
     <div>
       <div class="footer-logo">
@@ -711,26 +707,26 @@ footer{background:#0f0303;padding:72px 60px 36px;}
 // ========== DATA ==========
 const properties = {
   rent: [
-    {id:'r1',title:'2-комнатная квартира',jk:'ЖК «Центральный»',meta:'54 м² · 8 этаж · Алмалинский район',price:'85 000 ₸',priceSub:'/ месяц',free:true,params:[{k:'Площадь',v:'54 м²'},{k:'Этаж',v:'8 из 16'},{k:'Комнат',v:'2'},{k:'Тип',v:'Новостройка'},{k:'Мебель',v:'Есть'},{k:'Состояние',v:'Евро'}],desc:'Просторная двушка с панорамными окнами. Развитая инфраструктура, охраняемый двор, подземный паркинг. Домком поможет с оформлением.',color:'135deg,rgba(192,57,43,0.3),rgba(80,10,10,0.5)'},
-    {id:'r2',title:'1-комнатная квартира',jk:'ЖК «Riverside»',meta:'38 м² · 4 этаж · Медеуский район',price:'65 000 ₸',priceSub:'/ месяц',free:true,params:[{k:'Площадь',v:'38 м²'},{k:'Этаж',v:'4 из 12'},{k:'Комнат',v:'1'},{k:'Тип',v:'Новостройка'},{k:'Мебель',v:'Частично'},{k:'Состояние',v:'Стандарт'}],desc:'Уютная однушка у реки. Тихий двор, детская площадка, магазины рядом.',color:'135deg,rgba(40,80,120,0.3),rgba(10,30,60,0.5)'},
-    {id:'r3',title:'3-комнатная квартира',jk:'ЖК «Премиум»',meta:'78 м² · 12 этаж · Бостандыкский район',price:'120 000 ₸',priceSub:'/ месяц',free:true,params:[{k:'Площадь',v:'78 м²'},{k:'Этаж',v:'12 из 20'},{k:'Комнат',v:'3'},{k:'Тип',v:'Бизнес-класс'},{k:'Мебель',v:'Полностью'},{k:'Состояние',v:'Люкс'}],desc:'Трёхкомнатная с видом на горы. Полностью меблирована, техника включена.',color:'135deg,rgba(80,50,120,0.3),rgba(30,10,60,0.5)'},
-    {id:'r4',title:'Студия',jk:'ЖК «Молодёжный»',meta:'28 м² · 3 этаж · Наурызбайский район',price:'45 000 ₸',priceSub:'/ месяц',free:true,params:[{k:'Площадь',v:'28 м²'},{k:'Этаж',v:'3 из 9'},{k:'Комнат',v:'Студия'},{k:'Тип',v:'Эконом'},{k:'Мебель',v:'Есть'},{k:'Состояние',v:'Хорошее'}],desc:'Компактная студия для одного или пары. Всё необходимое есть.',color:'135deg,rgba(20,80,40,0.3),rgba(5,30,10,0.5)'},
-    {id:'r5',title:'2-комнатная квартира',jk:'ЖК «Алтын»',meta:'62 м² · 6 этаж · Алмалинский район',price:'95 000 ₸',priceSub:'/ месяц',free:true,params:[{k:'Площадь',v:'62 м²'},{k:'Этаж',v:'6 из 14'},{k:'Комнат',v:'2'},{k:'Тип',v:'Новостройка'},{k:'Мебель',v:'Есть'},{k:'Состояние',v:'Евро'}],desc:'Современная двушка с дизайнерским ремонтом. Закрытый двор.',color:'135deg,rgba(150,100,20,0.3),rgba(60,30,5,0.5)'},
-    {id:'r6',title:'4-комнатная квартира',jk:'ЖК «Резиденция»',meta:'110 м² · 15 этаж · Медеуский район',price:'220 000 ₸',priceSub:'/ месяц',free:true,params:[{k:'Площадь',v:'110 м²'},{k:'Этаж',v:'15 из 22'},{k:'Комнат',v:'4'},{k:'Тип',v:'Премиум'},{k:'Мебель',v:'Полностью'},{k:'Состояние',v:'Люкс'}],desc:'Элитные апартаменты с панорамным видом. Консьерж, спа, паркинг.',color:'135deg,rgba(100,20,20,0.4),rgba(40,5,5,0.6)'},
+    {id:'r1',title:'2-комнатная квартира',jk:'ЖК «Центральный»',meta:'54 м² · 8 этаж · Алмалинский район',price:'85 000р',priceSub:'/ месяц',free:true,params:[{k:'Площадь',v:'54 м²'},{k:'Этаж',v:'8 из 16'},{k:'Комнат',v:'2'},{k:'Тип',v:'Новостройка'},{k:'Мебель',v:'Есть'},{k:'Состояние',v:'Евро'}],desc:'Просторная двушка с панорамными окнами. Развитая инфраструктура, охраняемый двор, подземный паркинг. Домком поможет с оформлением.',color:'135deg,rgba(192,57,43,0.3),rgba(80,10,10,0.5)'},
+    {id:'r2',title:'1-комнатная квартира',jk:'ЖК «Riverside»',meta:'38 м² · 4 этаж · Медеуский район',price:'65 000р',priceSub:'/ месяц',free:true,params:[{k:'Площадь',v:'38 м²'},{k:'Этаж',v:'4 из 12'},{k:'Комнат',v:'1'},{k:'Тип',v:'Новостройка'},{k:'Мебель',v:'Частично'},{k:'Состояние',v:'Стандарт'}],desc:'Уютная однушка у реки. Тихий двор, детская площадка, магазины рядом.',color:'135deg,rgba(40,80,120,0.3),rgba(10,30,60,0.5)'},
+    {id:'r3',title:'3-комнатная квартира',jk:'ЖК «Премиум»',meta:'78 м² · 12 этаж · Бостандыкский район',price:'120 000р',priceSub:'/ месяц',free:true,params:[{k:'Площадь',v:'78 м²'},{k:'Этаж',v:'12 из 20'},{k:'Комнат',v:'3'},{k:'Тип',v:'Бизнес-класс'},{k:'Мебель',v:'Полностью'},{k:'Состояние',v:'Люкс'}],desc:'Трёхкомнатная с видом на горы. Полностью меблирована, техника включена.',color:'135deg,rgba(80,50,120,0.3),rgba(30,10,60,0.5)'},
+    {id:'r4',title:'Студия',jk:'ЖК «Молодёжный»',meta:'28 м² · 3 этаж · Наурызбайский район',price:'45 000р',priceSub:'/ месяц',free:true,params:[{k:'Площадь',v:'28 м²'},{k:'Этаж',v:'3 из 9'},{k:'Комнат',v:'Студия'},{k:'Тип',v:'Эконом'},{k:'Мебель',v:'Есть'},{k:'Состояние',v:'Хорошее'}],desc:'Компактная студия для одного или пары. Всё необходимое есть.',color:'135deg,rgba(20,80,40,0.3),rgba(5,30,10,0.5)'},
+    {id:'r5',title:'2-комнатная квартира',jk:'ЖК «Алтын»',meta:'62 м² · 6 этаж · Алмалинский район',price:'95 000р',priceSub:'/ месяц',free:true,params:[{k:'Площадь',v:'62 м²'},{k:'Этаж',v:'6 из 14'},{k:'Комнат',v:'2'},{k:'Тип',v:'Новостройка'},{k:'Мебель',v:'Есть'},{k:'Состояние',v:'Евро'}],desc:'Современная двушка с дизайнерским ремонтом. Закрытый двор.',color:'135deg,rgba(150,100,20,0.3),rgba(60,30,5,0.5)'},
+    {id:'r6',title:'4-комнатная квартира',jk:'ЖК «Резиденция»',meta:'110 м² · 15 этаж · Медеуский район',price:'220 000р',priceSub:'/ месяц',free:true,params:[{k:'Площадь',v:'110 м²'},{k:'Этаж',v:'15 из 22'},{k:'Комнат',v:'4'},{k:'Тип',v:'Премиум'},{k:'Мебель',v:'Полностью'},{k:'Состояние',v:'Люкс'}],desc:'Элитные апартаменты с панорамным видом. Консьерж, спа, паркинг.',color:'135deg,rgba(100,20,20,0.4),rgba(40,5,5,0.6)'},
   ],
   daily: [
-    {id:'d1',title:'Студия',jk:'ЖК «Центральный»',meta:'32 м² · 5 этаж · Центр города',price:'8 000 ₸',priceSub:'/ сутки',free:true,params:[{k:'Площадь',v:'32 м²'},{k:'Этаж',v:'5 из 16'},{k:'Комнат',v:'Студия'},{k:'Wi-Fi',v:'Есть'},{k:'Посуда',v:'Есть'},{k:'Парковка',v:'Нет'}],desc:'Уютная студия в центре. Всё для краткосрочного проживания.',color:'135deg,rgba(192,57,43,0.25),rgba(80,10,10,0.45)'},
-    {id:'d2',title:'1-комнатная квартира',jk:'ЖК «Riverside»',meta:'40 м² · 7 этаж · Вид на реку',price:'12 000 ₸',priceSub:'/ сутки',free:true,params:[{k:'Площадь',v:'40 м²'},{k:'Этаж',v:'7 из 12'},{k:'Комнат',v:'1'},{k:'Wi-Fi',v:'Есть'},{k:'Посуда',v:'Есть'},{k:'Парковка',v:'Есть'}],desc:'Красивый вид на реку. Полностью оборудована. Тихое место.',color:'135deg,rgba(30,60,120,0.25),rgba(5,20,60,0.45)'},
-    {id:'d3',title:'2-комнатная квартира',jk:'ЖК «Бизнес»',meta:'56 м² · 10 этаж · Деловой центр',price:'16 000 ₸',priceSub:'/ сутки',free:true,params:[{k:'Площадь',v:'56 м²'},{k:'Этаж',v:'10 из 18'},{k:'Комнат',v:'2'},{k:'Wi-Fi',v:'Есть'},{k:'Посуда',v:'Есть'},{k:'Парковка',v:'Есть'}],desc:'Апартаменты бизнес-класса. Идеально для командировок.',color:'135deg,rgba(40,80,40,0.25),rgba(10,30,10,0.45)'},
-    {id:'d4',title:'Люкс-студия',jk:'ЖК «Премиум»',meta:'45 м² · 18 этаж · Панорамный вид',price:'22 000 ₸',priceSub:'/ сутки',free:true,params:[{k:'Площадь',v:'45 м²'},{k:'Этаж',v:'18 из 22'},{k:'Комнат',v:'Студия'},{k:'Wi-Fi',v:'500 Мбит'},{k:'Посуда',v:'Есть'},{k:'Джакузи',v:'Есть'}],desc:'Панорамные окна, джакузи, премиальный интерьер. Незабываемые виды.',color:'135deg,rgba(80,40,120,0.25),rgba(30,10,60,0.45)'},
+    {id:'d1',title:'Студия',jk:'ЖК «Центральный»',meta:'32 м² · 5 этаж · Центр города',price:'8 000р',priceSub:'/ сутки',free:true,params:[{k:'Площадь',v:'32 м²'},{k:'Этаж',v:'5 из 16'},{k:'Комнат',v:'Студия'},{k:'Wi-Fi',v:'Есть'},{k:'Посуда',v:'Есть'},{k:'Парковка',v:'Нет'}],desc:'Уютная студия в центре. Всё для краткосрочного проживания.',color:'135deg,rgba(192,57,43,0.25),rgba(80,10,10,0.45)'},
+    {id:'d2',title:'1-комнатная квартира',jk:'ЖК «Riverside»',meta:'40 м² · 7 этаж · Вид на реку',price:'12 000р',priceSub:'/ сутки',free:true,params:[{k:'Площадь',v:'40 м²'},{k:'Этаж',v:'7 из 12'},{k:'Комнат',v:'1'},{k:'Wi-Fi',v:'Есть'},{k:'Посуда',v:'Есть'},{k:'Парковка',v:'Есть'}],desc:'Красивый вид на реку. Полностью оборудована. Тихое место.',color:'135deg,rgba(30,60,120,0.25),rgba(5,20,60,0.45)'},
+    {id:'d3',title:'2-комнатная квартира',jk:'ЖК «Бизнес»',meta:'56 м² · 10 этаж · Деловой центр',price:'16 000р',priceSub:'/ сутки',free:true,params:[{k:'Площадь',v:'56 м²'},{k:'Этаж',v:'10 из 18'},{k:'Комнат',v:'2'},{k:'Wi-Fi',v:'Есть'},{k:'Посуда',v:'Есть'},{k:'Парковка',v:'Есть'}],desc:'Апартаменты бизнес-класса. Идеально для командировок.',color:'135deg,rgba(40,80,40,0.25),rgba(10,30,10,0.45)'},
+    {id:'d4',title:'Люкс-студия',jk:'ЖК «Премиум»',meta:'45 м² · 18 этаж · Панорамный вид',price:'22 000р',priceSub:'/ сутки',free:true,params:[{k:'Площадь',v:'45 м²'},{k:'Этаж',v:'18 из 22'},{k:'Комнат',v:'Студия'},{k:'Wi-Fi',v:'500 Мбит'},{k:'Посуда',v:'Есть'},{k:'Джакузи',v:'Есть'}],desc:'Панорамные окна, джакузи, премиальный интерьер. Незабываемые виды.',color:'135deg,rgba(80,40,120,0.25),rgba(30,10,60,0.45)'},
   ],
   sale: [
-    {id:'s1',title:'2-комнатная квартира',jk:'ЖК «Премиум»',meta:'58 м² · 9 этаж · Бостандыкский район',price:'28 500 000 ₸',priceSub:'',free:false,params:[{k:'Площадь',v:'58 м²'},{k:'Этаж',v:'9 из 20'},{k:'Комнат',v:'2'},{k:'Тип',v:'Бизнес-класс'},{k:'Год',v:'2022'},{k:'Комиссия',v:'1.5%'}],desc:'Продаётся двушка в ЖК бизнес-класса. Отличная локация, развитая инфраструктура.',color:'135deg,rgba(192,57,43,0.25),rgba(80,10,10,0.45)'},
-    {id:'s2',title:'3-комнатная квартира',jk:'ЖК «Новый»',meta:'82 м² · 6 этаж · Алмалинский район',price:'42 000 000 ₸',priceSub:'',free:false,params:[{k:'Площадь',v:'82 м²'},{k:'Этаж',v:'6 из 14'},{k:'Комнат',v:'3'},{k:'Тип',v:'Новостройка'},{k:'Год',v:'2023'},{k:'Комиссия',v:'1.5%'}],desc:'Большая трёшка в новом ЖК. Евроремонт, встроенная кухня, два санузла.',color:'135deg,rgba(20,60,120,0.25),rgba(5,20,60,0.45)'},
-    {id:'s3',title:'1-комнатная квартира',jk:'ЖК «Светлый»',meta:'42 м² · 3 этаж · Медеуский район',price:'18 900 000 ₸',priceSub:'',free:false,params:[{k:'Площадь',v:'42 м²'},{k:'Этаж',v:'3 из 10'},{k:'Комнат',v:'1'},{k:'Тип',v:'Стандарт'},{k:'Год',v:'2020'},{k:'Комиссия',v:'1.5%'}],desc:'Уютная однушка в тихом районе. Хорошее состояние, рядом школа и парк.',color:'135deg,rgba(20,100,40,0.25),rgba(5,40,10,0.45)'},
-    {id:'s4',title:'4-комнатная квартира',jk:'ЖК «Резиденция»',meta:'130 м² · 14 этаж · Медеуский район',price:'85 000 000 ₸',priceSub:'',free:false,params:[{k:'Площадь',v:'130 м²'},{k:'Этаж',v:'14 из 22'},{k:'Комнат',v:'4'},{k:'Тип',v:'Премиум'},{k:'Год',v:'2024'},{k:'Комиссия',v:'1.5%'}],desc:'Элитные апартаменты. Дизайнерский ремонт, панорамные окна, два паркинга.',color:'135deg,rgba(100,80,20,0.25),rgba(40,30,5,0.45)'},
-    {id:'s5',title:'2-комнатная квартира',jk:'ЖК «Алтын»',meta:'65 м² · 7 этаж · Наурызбайский район',price:'24 500 000 ₸',priceSub:'',free:false,params:[{k:'Площадь',v:'65 м²'},{k:'Этаж',v:'7 из 14'},{k:'Комнат',v:'2'},{k:'Тип',v:'Комфорт'},{k:'Год',v:'2021'},{k:'Комиссия',v:'1.5%'}],desc:'Двушка в комфорт-классе. Закрытый двор, детская площадка, охрана.',color:'135deg,rgba(60,20,100,0.25),rgba(20,5,40,0.45)'},
-    {id:'s6',title:'Студия',jk:'ЖК «Старт»',meta:'30 м² · 2 этаж · Турксибский район',price:'12 000 000 ₸',priceSub:'',free:false,params:[{k:'Площадь',v:'30 м²'},{k:'Этаж',v:'2 из 9'},{k:'Комнат',v:'Студия'},{k:'Тип',v:'Эконом'},{k:'Год',v:'2019'},{k:'Комиссия',v:'1.5%'}],desc:'Отличный вариант для первой покупки. Чистое состояние, можно въезжать сразу.',color:'135deg,rgba(20,80,80,0.25),rgba(5,30,30,0.45)'},
+    {id:'s1',title:'2-комнатная квартира',jk:'ЖК «Премиум»',meta:'58 м² · 9 этаж · Бостандыкский район',price:'28 500 000р',priceSub:'',free:false,params:[{k:'Площадь',v:'58 м²'},{k:'Этаж',v:'9 из 20'},{k:'Комнат',v:'2'},{k:'Тип',v:'Бизнес-класс'},{k:'Год',v:'2022'},{k:'Комиссия',v:'1.5%'}],desc:'Продаётся двушка в ЖК бизнес-класса. Отличная локация, развитая инфраструктура.',color:'135deg,rgba(192,57,43,0.25),rgba(80,10,10,0.45)'},
+    {id:'s2',title:'3-комнатная квартира',jk:'ЖК «Новый»',meta:'82 м² · 6 этаж · Алмалинский район',price:'42 000 000р',priceSub:'',free:false,params:[{k:'Площадь',v:'82 м²'},{k:'Этаж',v:'6 из 14'},{k:'Комнат',v:'3'},{k:'Тип',v:'Новостройка'},{k:'Год',v:'2023'},{k:'Комиссия',v:'1.5%'}],desc:'Большая трёшка в новом ЖК. Евроремонт, встроенная кухня, два санузла.',color:'135deg,rgba(20,60,120,0.25),rgba(5,20,60,0.45)'},
+    {id:'s3',title:'1-комнатная квартира',jk:'ЖК «Светлый»',meta:'42 м² · 3 этаж · Медеуский район',price:'18 900 000р',priceSub:'',free:false,params:[{k:'Площадь',v:'42 м²'},{k:'Этаж',v:'3 из 10'},{k:'Комнат',v:'1'},{k:'Тип',v:'Стандарт'},{k:'Год',v:'2020'},{k:'Комиссия',v:'1.5%'}],desc:'Уютная однушка в тихом районе. Хорошее состояние, рядом школа и парк.',color:'135deg,rgba(20,100,40,0.25),rgba(5,40,10,0.45)'},
+    {id:'s4',title:'4-комнатная квартира',jk:'ЖК «Резиденция»',meta:'130 м² · 14 этаж · Медеуский район',price:'85 000 000р',priceSub:'',free:false,params:[{k:'Площадь',v:'130 м²'},{k:'Этаж',v:'14 из 22'},{k:'Комнат',v:'4'},{k:'Тип',v:'Премиум'},{k:'Год',v:'2024'},{k:'Комиссия',v:'1.5%'}],desc:'Элитные апартаменты. Дизайнерский ремонт, панорамные окна, два паркинга.',color:'135deg,rgba(100,80,20,0.25),rgba(40,30,5,0.45)'},
+    {id:'s5',title:'2-комнатная квартира',jk:'ЖК «Алтын»',meta:'65 м² · 7 этаж · Наурызбайский район',price:'24 500 000р',priceSub:'',free:false,params:[{k:'Площадь',v:'65 м²'},{k:'Этаж',v:'7 из 14'},{k:'Комнат',v:'2'},{k:'Тип',v:'Комфорт'},{k:'Год',v:'2021'},{k:'Комиссия',v:'1.5%'}],desc:'Двушка в комфорт-классе. Закрытый двор, детская площадка, охрана.',color:'135deg,rgba(60,20,100,0.25),rgba(20,5,40,0.45)'},
+    {id:'s6',title:'Студия',jk:'ЖК «Старт»',meta:'30 м² · 2 этаж · Турксибский район',price:'12 000 000р',priceSub:'',free:false,params:[{k:'Площадь',v:'30 м²'},{k:'Этаж',v:'2 из 9'},{k:'Комнат',v:'Студия'},{k:'Тип',v:'Эконом'},{k:'Год',v:'2019'},{k:'Комиссия',v:'1.5%'}],desc:'Отличный вариант для первой покупки. Чистое состояние, можно въезжать сразу.',color:'135deg,rgba(20,80,80,0.25),rgba(5,30,30,0.45)'},
   ]
 };
 
@@ -868,6 +864,12 @@ function showPage(name) {
 
   window.scrollTo({top:0, behavior:'smooth'});
 
+  // Показываем футер только на главной
+  const footer = document.getElementById('main-footer');
+  if (footer) {
+    footer.style.display = (name === 'home') ? 'block' : 'none';
+  }
+
   if (name === 'rent') renderGrid('rent');
   if (name === 'daily') renderGrid('daily');
   if (name === 'sale') renderGrid('sale');
@@ -959,6 +961,7 @@ function initFadeIn() {
 // ========== ADMIN ==========
 const ADMIN_PASS = 'domcom2024';
 let adminLoggedIn = false;
+let districts = []; // ← ВОТ ЭТА СТРОКА — районы пустые, ты сам добавишь в админке
 let currentAdmTab = 'rent';
 let editingId = null;
 let editingOrigType = null;
@@ -990,13 +993,44 @@ function checkAdminPass() {
     document.getElementById('admin-pass-input').focus();
   }
 }
+function renderDistrictAdmin() {
+  const container = document.getElementById('adm-districts');
+  if (!container) return;
+  container.innerHTML = districts.map((d, i) => `
+    <div style="display:flex;align-items:center;gap:8px;padding:8px 0;border-bottom:1px solid #f5f5f5;">
+      <span style="flex:1;font-size:13px;color:#1a1a1a;">${d}</span>
+      <button onclick="deleteDistrict(${i})"
+        style="padding:4px 12px;background:#fff5f5;border:1px solid #ffdddd;border-radius:4px;
+               font-family:'Montserrat',sans-serif;font-size:11px;color:#e74c3c;cursor:pointer;">
+        Удалить
+      </button>
+    </div>
+  `).join('');
+  renderDistrictSelects();
+}
 
+function addDistrict() {
+  const input = document.getElementById('new-district-input');
+  const val = input.value.trim();
+  if (!val) { showToast('Введите название района'); return; }
+  if (districts.includes(val)) { showToast('Такой район уже есть'); return; }
+  districts.push(val);
+  input.value = '';
+  renderDistrictAdmin();
+  showToast('Район добавлен ✅');
+}
+
+function deleteDistrict(i) {
+  districts.splice(i, 1);
+  renderDistrictAdmin();
+  showToast('Район удалён');
+}
 function updateAdmStats() {
   document.getElementById('adm-count-rent').textContent = properties.rent.length;
   document.getElementById('adm-count-daily').textContent = properties.daily.length;
   document.getElementById('adm-count-sale').textContent = properties.sale.length;
+  renderDistrictAdmin();
 }
-
 function switchAdmTab(type, btn) {
   currentAdmTab = type;
   document.querySelectorAll('.adm-tab').forEach(t => {
@@ -1009,7 +1043,23 @@ function switchAdmTab(type, btn) {
   btn.style.fontWeight = '500';
   renderAdminList(type);
 }
+function renderDistrictSelects() {
+  const opts = ['<option value="">Все районы</option>', 
+    ...districts.map(d => `<option>${d}</option>`)
+  ].join('');
+  
+  const optsFull = districts.map(d => `<option>${d}</option>`).join('');
 
+  // Обновляем фильтры поиска
+  const rentD = document.getElementById('rent-district');
+  const saleD = document.getElementById('sale-district');
+  if (rentD) rentD.innerHTML = opts;
+  if (saleD) saleD.innerHTML = opts;
+
+  // Обновляем select в форме редактирования
+  const editD = document.getElementById('edit-district');
+  if (editD) editD.innerHTML = optsFull;
+}
 function renderAdminList(type) {
   const list = document.getElementById('adm-list');
   const items = properties[type];
@@ -1206,9 +1256,18 @@ function adminDelete(id, type) {
   updateAdmStats();
   showToast('Объект удалён 🗑');
 }
-// ========== INIT ==========
 document.addEventListener('DOMContentLoaded', () => {
   initFadeIn();
+  renderDistrictSelects();
+  const footer = document.getElementById('main-footer');
+  if (footer) footer.style.display = 'block';
+  
+  // Замена ₸ на ₽ везде на странице
+  document.body.innerHTML = document.body.innerHTML.replaceAll('₸', '₽');
+  
+  // Переподключаем события после замены innerHTML
+  initFadeIn();
+  renderDistrictSelects();
 });
 </script>
   <!-- ===================== ADMIN PAGE ===================== -->
@@ -1242,7 +1301,24 @@ document.addEventListener('DOMContentLoaded', () => {
         <div style="font-size:12px;color:#999;margin-top:4px;">Объектов на продажу</div>
       </div>
     </div>
-
+<!-- DISTRICTS BLOCK -->
+<div style="background:#fff;border:1px solid #efefef;border-radius:8px;padding:24px;margin-bottom:24px;">
+  <h3 style="font-family:'Montserrat',sans-serif;font-size:15px;font-weight:600;color:#1a1a1a;margin-bottom:16px;">
+    📍 Управление районами
+  </h3>
+  <div style="display:flex;gap:10px;margin-bottom:16px;">
+    <input id="new-district-input" type="text" placeholder="Название района..."
+      style="flex:1;padding:10px 14px;border:1px solid #e8e8e8;border-radius:6px;
+             font-family:'Montserrat',sans-serif;font-size:13px;outline:none;"
+      onkeydown="if(event.key==='Enter')addDistrict()">
+    <button onclick="addDistrict()"
+      style="background:#1a1a1a;color:#fff;padding:10px 20px;border:none;border-radius:6px;
+             font-family:'Montserrat',sans-serif;font-size:13px;cursor:pointer;">
+      + Добавить
+    </button>
+  </div>
+  <div id="adm-districts"></div>
+</div>
     <!-- TABS -->
     <div style="background:#fff;border:1px solid #efefef;border-radius:8px;overflow:hidden;">
       <div style="display:flex;border-bottom:1px solid #efefef;">
@@ -1299,13 +1375,8 @@ document.addEventListener('DOMContentLoaded', () => {
       </div>
       <div>
         <label style="display:block;font-size:11px;color:#aaa;text-transform:uppercase;letter-spacing:0.5px;margin-bottom:6px;">Район</label>
-        <select id="edit-district" style="width:100%;padding:10px 14px;border:1px solid #e8e8e8;border-radius:6px;font-family:'Montserrat',sans-serif;font-size:13px;outline:none;color:#1a1a1a;background:#fff;">
-          <option>Алмалинский район</option>
-          <option>Бостандыкский район</option>
-          <option>Медеуский район</option>
-          <option>Наурызбайский район</option>
-          <option>Турксибский район</option>
-        </select>
+      <select id="edit-district" style="width:100%;padding:10px 14px;border:1px solid #e8e8e8;border-radius:6px;font-family:'Montserrat',sans-serif;font-size:13px;outline:none;color:#1a1a1a;background:#fff;">
+</select>
       </div>
       <div>
         <label style="display:block;font-size:11px;color:#aaa;text-transform:uppercase;letter-spacing:0.5px;margin-bottom:6px;">Площадь (м²)</label>
@@ -1329,7 +1400,7 @@ document.addEventListener('DOMContentLoaded', () => {
       </div>
       <div>
         <label style="display:block;font-size:11px;color:#aaa;text-transform:uppercase;letter-spacing:0.5px;margin-bottom:6px;">Цена (₸)</label>
-        <input id="edit-price" type="text" placeholder="85 000 ₸"
+        <input id="edit-price" type="text" placeholder="85 000 р"
           style="width:100%;padding:10px 14px;border:1px solid #e8e8e8;border-radius:6px;font-family:'Montserrat',sans-serif;font-size:13px;outline:none;">
       </div>
       <div>
