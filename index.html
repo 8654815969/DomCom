@@ -66,39 +66,44 @@ nav{position:fixed;top:0;width:100%;background:rgba(20,5,5,0.97);backdrop-filter
 .cat-tab:hover{color:rgba(255,255,255,0.8);}
 
 /* SEARCH */
-.search-bar{display:flex;gap:12px;flex-wrap:wrap;align-items:flex-end;background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.07);padding:24px;margin-bottom:36px;}
-.sg{flex:1;min-width:140px;}
-.sg label{display:block;font-size:9px;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,0.35);margin-bottom:6px;}
-.sg input,.sg select{width:100%;padding:10px 14px;background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.08);color:#fff;font-family:'Montserrat',sans-serif;font-size:12px;font-weight:300;outline:none;transition:border-color 0.3s;}
-.sg input::placeholder{color:rgba(255,255,255,0.25);}
-.sg select option{background:#2a0808;}
-.sg input:focus,.sg select:focus{border-color:rgba(192,57,43,0.6);}
-.search-go{background:#c0392b;color:#fff;padding:10px 28px;font-size:10px;letter-spacing:2px;text-transform:uppercase;border:none;cursor:pointer;font-family:'Montserrat',sans-serif;white-space:nowrap;transition:all 0.3s;}
-.search-go:hover{background:#e74c3c;}
+.search-bar{display:flex;gap:10px;flex-wrap:wrap;align-items:flex-end;background:#fff;border:none;border-bottom:1px solid #efefef;padding:16px 60px;margin-bottom:0;}
+.sg{flex:1;min-width:120px;}
+.sg label{display:block;font-size:10px;letter-spacing:0.5px;text-transform:uppercase;color:#aaa;margin-bottom:5px;font-weight:400;}
+.sg input,.sg select{width:100%;padding:9px 12px;background:#f5f5f5;border:1px solid #e8e8e8;color:#1a1a1a;font-family:'Montserrat',sans-serif;font-size:12px;font-weight:300;outline:none;border-radius:4px;transition:border-color 0.2s;}
+.sg input::placeholder{color:#bbb;}
+.sg select option{background:#fff;color:#1a1a1a;}
+.sg input:focus,.sg select:focus{border-color:#1a1a1a;background:#fff;}
+.search-go{background:#1a1a1a;color:#fff;padding:9px 28px;font-size:12px;border:none;cursor:pointer;font-family:'Montserrat',sans-serif;font-weight:400;border-radius:4px;white-space:nowrap;transition:all 0.2s;}
+.search-go:hover{background:#333;}
 
 /* PROPERTY GRID */
-.prop-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;}
-.prop-card{background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.07);overflow:hidden;transition:all 0.4s;cursor:pointer;}
-.prop-card:hover{border-color:rgba(255,255,255,0.18);transform:translateY(-4px);box-shadow:0 24px 60px rgba(0,0,0,0.5);}
-.prop-img{height:210px;position:relative;overflow:hidden;background:linear-gradient(135deg,rgba(192,57,43,0.15),rgba(80,10,10,0.3));}
-.prop-img img{width:100%;height:100%;object-fit:cover;opacity:0.75;transition:opacity 0.4s;}
-.prop-card:hover .prop-img img{opacity:0.9;}
-.prop-img-ph{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-family:'Cormorant Garamond',serif;font-size:16px;color:rgba(255,255,255,0.2);font-style:italic;}
-.prop-badge{position:absolute;top:12px;left:12px;font-size:9px;letter-spacing:2px;padding:5px 12px;text-transform:uppercase;}
-.badge-rent{background:#c0392b;}
-.badge-daily{background:#8a4a00;}
-.badge-sale{background:#1a5c2a;}
-.badge-free{position:absolute;top:12px;right:12px;background:rgba(39,174,96,0.85);font-size:9px;letter-spacing:1px;padding:5px 10px;text-transform:uppercase;color:#fff;}
-.prop-body{padding:22px;}
-.prop-title{font-family:'Cormorant Garamond',serif;font-size:20px;font-weight:400;color:#fff;margin-bottom:5px;}
-.prop-meta{font-size:11px;color:rgba(255,255,255,0.35);letter-spacing:0.5px;margin-bottom:14px;}
-.prop-price-row{display:flex;align-items:baseline;justify-content:space-between;margin-bottom:16px;}
-.prop-price{font-size:18px;font-weight:300;color:#fff;letter-spacing:0.5px;}
-.prop-price sub{font-size:11px;color:rgba(255,255,255,0.4);}
-.prop-comm{font-size:10px;color:#27ae60;letter-spacing:1px;text-transform:uppercase;}
-.prop-btn{display:block;text-align:center;padding:10px;border:1px solid rgba(255,255,255,0.15);font-size:9px;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,0.7);background:none;cursor:pointer;font-family:'Montserrat',sans-serif;transition:all 0.3s;width:100%;}
-.prop-btn:hover{background:rgba(255,255,255,0.08);color:#fff;border-color:rgba(255,255,255,0.3);}
-.no-items{text-align:center;padding:60px;color:rgba(255,255,255,0.25);font-size:14px;grid-column:1/-1;}
+.prop-grid{display:flex;flex-direction:column;gap:12px;}
+.prop-card{background:#fff;border:1px solid #efefef;border-radius:8px;overflow:hidden;transition:all 0.25s;cursor:pointer;display:flex;flex-direction:row;align-items:stretch;box-shadow:0 1px 4px rgba(0,0,0,0.04);}
+.prop-card:hover{border-color:#ddd;box-shadow:0 4px 20px rgba(0,0,0,0.08);}
+.prop-img{width:220px;min-width:220px;height:160px;position:relative;overflow:hidden;flex-shrink:0;}
+.prop-img-ph{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-family:'Montserrat',sans-serif;font-size:11px;color:rgba(255,255,255,0.45);font-weight:300;}
+.prop-badge{position:absolute;top:10px;left:10px;font-size:9px;letter-spacing:1px;padding:4px 10px;text-transform:uppercase;border-radius:3px;font-weight:500;color:#fff;}
+.badge-rent{background:#e74c3c;}
+.badge-daily{background:#e67e22;}
+.badge-sale{background:#27ae60;}
+.badge-free{position:absolute;top:10px;right:10px;background:rgba(255,255,255,0.92);color:#27ae60;font-size:9px;letter-spacing:0.5px;padding:4px 10px;text-transform:uppercase;border-radius:3px;font-weight:500;}
+.prop-body{padding:18px 22px;flex:1;display:flex;flex-direction:column;justify-content:space-between;}
+.prop-body-top{display:flex;justify-content:space-between;align-items:flex-start;gap:16px;}
+.prop-body-left{flex:1;}
+.prop-jk{font-size:11px;color:#e74c3c;font-weight:400;margin-bottom:3px;}
+.prop-title{font-family:'Montserrat',sans-serif;font-size:15px;font-weight:500;color:#1a1a1a;margin-bottom:3px;}
+.prop-meta{font-size:11px;color:#999;font-weight:300;}
+.prop-price-col{text-align:right;flex-shrink:0;}
+.prop-price{font-size:18px;font-weight:600;color:#1a1a1a;letter-spacing:-0.5px;line-height:1.2;}
+.prop-price sub{font-size:11px;color:#999;font-weight:300;}
+.prop-comm{font-size:11px;color:#27ae60;font-weight:500;margin-top:3px;}
+.prop-comm.red{color:#e74c3c;}
+.prop-body-bottom{display:flex;align-items:center;justify-content:space-between;margin-top:12px;padding-top:12px;border-top:1px solid #f0f0f0;}
+.prop-tags{display:flex;gap:6px;flex-wrap:wrap;}
+.prop-tag{background:#f5f5f5;color:#666;font-size:11px;padding:3px 9px;border-radius:3px;font-weight:300;}
+.prop-btn{display:inline-block;padding:7px 18px;border:1px solid #1a1a1a;font-size:11px;color:#1a1a1a;background:none;cursor:pointer;font-family:'Montserrat',sans-serif;font-weight:400;transition:all 0.2s;border-radius:4px;white-space:nowrap;width:auto;}
+.prop-btn:hover{background:#1a1a1a;color:#fff;}
+.no-items{text-align:center;padding:60px;color:#bbb;font-size:14px;background:#fff;border-radius:8px;border:1px solid #efefef;}
 
 /* ========== WHY DOMKOM ========== */
 .why-section{padding:100px 60px;background:#160505;}
@@ -212,10 +217,15 @@ footer{background:#0f0303;padding:72px 60px 36px;}
 .page.active{display:block;}
 
 /* ========== PROPERTY PAGES ========== */
-.prop-page-hero{padding:140px 60px 60px;background:linear-gradient(135deg,#1a0505,#2a0808);}
-.prop-page-hero h1{font-family:'Cormorant Garamond',serif;font-size:56px;font-weight:300;color:#fff;margin-bottom:12px;}
-.prop-page-hero p{font-size:13px;color:rgba(255,255,255,0.4);}
-.prop-page-content{padding:60px 60px 100px;background:#1f0808;}
+.prop-page-hero{padding:140px 60px 40px;background:#fff;border-bottom:1px solid #efefef;}
+.prop-page-hero h1{font-family:'Montserrat',sans-serif;font-size:28px;font-weight:500;color:#1a1a1a;margin-bottom:6px;}
+.prop-page-hero p{font-size:13px;color:#999;font-weight:300;}
+.prop-page-hero .sec-tag{display:none;}
+.prop-page-content{padding:0;background:#f7f7f7;min-height:80vh;}
+.prop-list-wrap{padding:20px 60px 60px;}
+.results-bar{padding:16px 0 12px;display:flex;align-items:center;}
+.results-count{font-size:13px;color:#999;font-weight:300;}
+.results-count strong{color:#1a1a1a;font-weight:500;}
 
 /* ========== ANIMATIONS ========== */
 .fade-in{opacity:0;transform:translateY(20px);transition:opacity 0.7s ease,transform 0.7s ease;}
@@ -430,125 +440,88 @@ footer{background:#0f0303;padding:72px 60px 36px;}
 <!-- ===================== RENT PAGE ===================== -->
 <div class="page" id="page-rent">
   <div class="prop-page-hero">
-    <p class="sec-tag">Каталог</p>
     <h1>Аренда квартир</h1>
     <p>Без комиссии · Напрямую от собственника · Через домкома</p>
   </div>
-  <div class="prop-page-content">
-    <div class="search-bar">
-      <div class="sg">
-        <label>Район</label>
-        <select id="rent-district">
-          <option value="">Все районы</option>
-          <option>Алмалинский</option>
-          <option>Бостандыкский</option>
-          <option>Медеуский</option>
-          <option>Наурызбайский</option>
-          <option>Турксибский</option>
-        </select>
-      </div>
-      <div class="sg">
-        <label>Комнат</label>
-        <select id="rent-rooms">
-          <option value="">Любое</option>
-          <option>Студия</option>
-          <option>1</option>
-          <option>2</option>
-          <option>3</option>
-          <option>4+</option>
-        </select>
-      </div>
-      <div class="sg">
-        <label>Цена от (₸)</label>
-        <input type="number" id="rent-from" placeholder="50 000">
-      </div>
-      <div class="sg">
-        <label>Цена до (₸)</label>
-        <input type="number" id="rent-to" placeholder="200 000">
-      </div>
-      <button class="search-go" onclick="filterProps('rent')">Найти</button>
+  <div class="search-bar">
+    <div class="sg"><label>Район</label>
+      <select id="rent-district">
+        <option value="">Все районы</option>
+        <option>Алмалинский</option><option>Бостандыкский</option>
+        <option>Медеуский</option><option>Наурызбайский</option><option>Турксибский</option>
+      </select>
     </div>
-    <div class="prop-grid" id="grid-rent"></div>
+    <div class="sg"><label>Комнат</label>
+      <select id="rent-rooms">
+        <option value="">Любое</option>
+        <option>Студия</option><option>1</option><option>2</option><option>3</option><option>4+</option>
+      </select>
+    </div>
+    <div class="sg"><label>Цена от (₸)</label><input type="number" id="rent-from" placeholder="50 000"></div>
+    <div class="sg"><label>Цена до (₸)</label><input type="number" id="rent-to" placeholder="200 000"></div>
+    <button class="search-go" onclick="filterProps('rent')">Найти</button>
+  </div>
+  <div class="prop-page-content">
+    <div class="prop-list-wrap">
+      <div class="results-bar"><div class="results-count">Найдено: <strong id="count-rent">0</strong> объектов</div></div>
+      <div class="prop-grid" id="grid-rent"></div>
+    </div>
   </div>
 </div>
-
 <!-- ===================== DAILY PAGE ===================== -->
 <div class="page" id="page-daily">
   <div class="prop-page-hero">
-    <p class="sec-tag">Каталог</p>
     <h1>Посуточная аренда</h1>
     <p>Без комиссии · Бронирование напрямую · Заезд через домкома</p>
   </div>
-  <div class="prop-page-content">
-    <div class="search-bar">
-      <div class="sg">
-        <label>Дата заезда</label>
-        <input type="date" id="daily-in">
-      </div>
-      <div class="sg">
-        <label>Дата выезда</label>
-        <input type="date" id="daily-out">
-      </div>
-      <div class="sg">
-        <label>Комнат</label>
-        <select id="daily-rooms">
-          <option value="">Любое</option>
-          <option>Студия</option>
-          <option>1</option>
-          <option>2</option>
-          <option>3</option>
-        </select>
-      </div>
-      <div class="sg">
-        <label>Макс. цена (₸/сутки)</label>
-        <input type="number" id="daily-max" placeholder="20 000">
-      </div>
-      <button class="search-go" onclick="filterProps('daily')">Найти</button>
+  <div class="search-bar">
+    <div class="sg"><label>Дата заезда</label><input type="date" id="daily-in"></div>
+    <div class="sg"><label>Дата выезда</label><input type="date" id="daily-out"></div>
+    <div class="sg"><label>Комнат</label>
+      <select id="daily-rooms">
+        <option value="">Любое</option>
+        <option>Студия</option><option>1</option><option>2</option><option>3</option>
+      </select>
     </div>
-    <div class="prop-grid" id="grid-daily"></div>
+    <div class="sg"><label>Макс. цена (₸/сутки)</label><input type="number" id="daily-max" placeholder="20 000"></div>
+    <button class="search-go" onclick="filterProps('daily')">Найти</button>
+  </div>
+  <div class="prop-page-content">
+    <div class="prop-list-wrap">
+      <div class="results-bar"><div class="results-count">Найдено: <strong id="count-daily">0</strong> объектов</div></div>
+      <div class="prop-grid" id="grid-daily"></div>
+    </div>
   </div>
 </div>
-
 <!-- ===================== SALE PAGE ===================== -->
 <div class="page" id="page-sale">
   <div class="prop-page-hero">
-    <p class="sec-tag">Каталог</p>
     <h1>Купить квартиру</h1>
     <p>Комиссия 1.5% · Прозрачная сделка · Юридическая поддержка</p>
   </div>
-  <div class="prop-page-content">
-    <div class="search-bar">
-      <div class="sg">
-        <label>Район</label>
-        <select id="sale-district">
-          <option value="">Все районы</option>
-          <option>Алмалинский</option>
-          <option>Бостандыкский</option>
-          <option>Медеуский</option>
-          <option>Наурызбайский</option>
-        </select>
-      </div>
-      <div class="sg">
-        <label>Комнат</label>
-        <select id="sale-rooms">
-          <option value="">Любое</option>
-          <option>1</option>
-          <option>2</option>
-          <option>3</option>
-          <option>4+</option>
-        </select>
-      </div>
-      <div class="sg">
-        <label>Цена от (₸)</label>
-        <input type="number" id="sale-from" placeholder="10 000 000">
-      </div>
-      <div class="sg">
-        <label>Цена до (₸)</label>
-        <input type="number" id="sale-to" placeholder="100 000 000">
-      </div>
-      <button class="search-go" onclick="filterProps('sale')">Найти</button>
+  <div class="search-bar">
+    <div class="sg"><label>Район</label>
+      <select id="sale-district">
+        <option value="">Все районы</option>
+        <option>Алмалинский</option><option>Бостандыкский</option>
+        <option>Медеуский</option><option>Наурызбайский</option>
+      </select>
     </div>
-    <div class="prop-grid" id="grid-sale"></div>
+    <div class="sg"><label>Комнат</label>
+      <select id="sale-rooms">
+        <option value="">Любое</option>
+        <option>1</option><option>2</option><option>3</option><option>4+</option>
+      </select>
+    </div>
+    <div class="sg"><label>Цена от (₸)</label><input type="number" id="sale-from" placeholder="10 000 000"></div>
+    <div class="sg"><label>Цена до (₸)</label><input type="number" id="sale-to" placeholder="100 000 000"></div>
+    <button class="search-go" onclick="filterProps('sale')">Найти</button>
+  </div>
+  <div class="prop-page-content">
+    <div class="prop-list-wrap">
+      <div class="results-bar"><div class="results-count">Найдено: <strong id="count-sale">0</strong> объектов</div></div>
+      <div class="prop-grid" id="grid-sale"></div>
+    </div>
   </div>
 </div>
 
@@ -675,34 +648,46 @@ const properties = {
 function renderCard(p, type) {
   const badgeClass = type==='rent'?'badge-rent':type==='daily'?'badge-daily':'badge-sale';
   const badgeText = type==='rent'?'Аренда':type==='daily'?'Посуточно':'Продажа';
+  const tags = p.params.slice(0,3).map(pr=>`<span class="prop-tag">${pr.v}</span>`).join('');
   return `
     <div class="prop-card fade-in" onclick="openDetail('${p.id}','${type}')">
       <div class="prop-img" style="background:linear-gradient(${p.color});">
         <div class="prop-img-ph">${p.jk}</div>
         <span class="prop-badge ${badgeClass}">${badgeText}</span>
-        ${p.free?'<span class="prop-badge-free">Без комиссии</span>':''}
+        ${p.free?'<span class="badge-free">Без комиссии</span>':''}
       </div>
       <div class="prop-body">
-        <div class="prop-title">${p.title}</div>
-        <div class="prop-meta">${p.meta}</div>
-        <div class="prop-price-row">
-          <div class="prop-price">${p.price} <sub>${p.priceSub}</sub></div>
-          ${p.free?'<span class="prop-comm">0% комиссии</span>':'<span class="prop-comm" style="color:#e74c3c;">1.5%</span>'}
+        <div class="prop-body-top">
+          <div class="prop-body-left">
+            <div class="prop-jk">${p.jk}</div>
+            <div class="prop-title">${p.title}</div>
+            <div class="prop-meta">${p.meta}</div>
+          </div>
+          <div class="prop-price-col">
+            <div class="prop-price">${p.price} <sub>${p.priceSub}</sub></div>
+            ${p.free?'<div class="prop-comm">0% комиссии</div>':'<div class="prop-comm red">Комиссия 1.5%</div>'}
+          </div>
         </div>
-        <button class="prop-btn">Подробнее →</button>
+        <div class="prop-body-bottom">
+          <div class="prop-tags">${tags}</div>
+          <button class="prop-btn">Подробнее →</button>
+        </div>
       </div>
     </div>`;
 }
 
 function renderGrid(type) {
   const grid = document.getElementById('grid-'+type);
+  const count = document.getElementById('count-'+type);
   if (!grid) return;
   const items = properties[type];
   if (!items || items.length === 0) {
     grid.innerHTML = '<div class="no-items">Объекты не найдены</div>';
+    if(count) count.textContent = '0';
     return;
   }
   grid.innerHTML = items.map(p => renderCard(p, type)).join('');
+  if(count) count.textContent = items.length;
   initFadeIn();
 }
 
