@@ -3,548 +3,885 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>DomCom — Аренда и продажа без комиссии</title>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500&family=Montserrat:wght@200;300;400&display=swap" rel="stylesheet">
+<title>ДомКом — Недвижимость без комиссии</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600&family=Montserrat:wght@200;300;400;500&display=swap" rel="stylesheet">
 <style>
 *{margin:0;padding:0;box-sizing:border-box;}
 html{scroll-behavior:smooth;}
-body{font-family:'Montserrat',sans-serif;background:#ffffff;color:#1a1a1a;font-weight:300;}
+body{font-family:'Montserrat',sans-serif;background:#2a0a0a;color:#f5eded;font-weight:300;overflow-x:hidden;}
 
-/* NAV */
-nav{position:fixed;top:0;width:100%;background:rgba(255,255,255,0.97);backdrop-filter:blur(10px);z-index:1000;padding:20px 60px;display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid #f0f0f0;}
-.logo{font-family:'Cormorant Garamond',serif;font-size:26px;font-weight:400;letter-spacing:4px;color:#1a1a1a;text-decoration:none;}
-.logo span{color:#8a7d6b;}
-.nav-links{display:flex;gap:40px;list-style:none;}
-.nav-links a{text-decoration:none;color:#1a1a1a;font-size:12px;letter-spacing:2px;text-transform:uppercase;font-weight:300;transition:color 0.3s;}
-.nav-links a:hover{color:#8a7d6b;}
-.nav-btn{background:#1a1a1a;color:#fff;padding:10px 28px;font-size:11px;letter-spacing:2px;text-transform:uppercase;border:none;cursor:pointer;font-family:'Montserrat',sans-serif;font-weight:300;transition:all 0.3s;}
-.nav-btn:hover{background:#8a7d6b;}
+/* ========== NAV ========== */
+nav{position:fixed;top:0;width:100%;background:rgba(20,5,5,0.97);backdrop-filter:blur(10px);z-index:1000;padding:16px 60px;display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid rgba(255,255,255,0.07);}
+.logo{display:flex;align-items:center;gap:12px;text-decoration:none;}
+.logo img{height:48px;filter:brightness(0) invert(1);}
+.logo-text{font-family:'Cormorant Garamond',serif;font-size:22px;font-weight:400;letter-spacing:3px;color:#fff;}
+.nav-links{display:flex;gap:36px;list-style:none;}
+.nav-links a{text-decoration:none;color:rgba(255,255,255,0.55);font-size:11px;letter-spacing:2px;text-transform:uppercase;font-weight:300;transition:color 0.3s;cursor:pointer;}
+.nav-links a:hover,.nav-links a.active{color:#fff;}
+.nav-right{display:flex;gap:12px;align-items:center;}
+.nav-btn{background:transparent;color:#fff;padding:9px 24px;font-size:10px;letter-spacing:2px;text-transform:uppercase;border:1px solid rgba(255,255,255,0.25);cursor:pointer;font-family:'Montserrat',sans-serif;font-weight:300;transition:all 0.3s;}
+.nav-btn:hover{background:rgba(255,255,255,0.08);}
+.nav-btn-main{background:#c0392b;border-color:#c0392b;}
+.nav-btn-main:hover{background:#e74c3c;border-color:#e74c3c;}
 
-/* HERO */
-.hero{height:100vh;display:flex;align-items:center;justify-content:center;text-align:center;padding:0 20px;background:#ffffff;position:relative;overflow:hidden;}
-.hero::before{content:'';position:absolute;top:0;left:0;right:0;bottom:0;background:radial-gradient(ellipse at center,#f8f6f3 0%,#ffffff 70%);}
-.hero-content{position:relative;z-index:1;}
-.hero-tag{font-size:11px;letter-spacing:4px;text-transform:uppercase;color:#8a7d6b;margin-bottom:24px;font-weight:300;}
-.hero h1{font-family:'Cormorant Garamond',serif;font-size:72px;font-weight:300;line-height:1.1;color:#1a1a1a;margin-bottom:20px;letter-spacing:2px;}
-.hero h1 em{font-style:italic;color:#8a7d6b;}
-.hero p{font-size:14px;color:#666;line-height:1.9;max-width:480px;margin:0 auto 48px;font-weight:300;letter-spacing:0.5px;}
+/* ========== HERO ========== */
+.hero{height:100vh;display:flex;align-items:center;justify-content:center;text-align:center;padding:0 24px;position:relative;overflow:hidden;background:#1a0505;}
+.hero-bg{position:absolute;inset:0;background:url('https://images.unsplash.com/photo-1486325212027-8081e485255e?w=1600') center/cover no-repeat;opacity:0.12;}
+.hero-overlay{position:absolute;inset:0;background:linear-gradient(180deg,rgba(26,5,5,0.3) 0%,rgba(26,5,5,0.7) 100%);}
+.hero-content{position:relative;z-index:1;max-width:800px;}
+.hero-badge{display:inline-flex;align-items:center;gap:8px;background:rgba(192,57,43,0.2);border:1px solid rgba(192,57,43,0.4);padding:8px 20px;font-size:10px;letter-spacing:3px;text-transform:uppercase;color:#e74c3c;margin-bottom:32px;}
+.hero h1{font-family:'Cormorant Garamond',serif;font-size:76px;font-weight:300;line-height:1.05;color:#fff;margin-bottom:24px;letter-spacing:1px;}
+.hero h1 em{font-style:italic;color:#e74c3c;}
+.hero-desc{font-size:14px;color:rgba(255,255,255,0.55);line-height:1.9;max-width:520px;margin:0 auto 20px;font-weight:300;}
+.hero-pills{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin-bottom:48px;}
+.pill{background:rgba(255,255,255,0.07);border:1px solid rgba(255,255,255,0.12);padding:8px 20px;font-size:10px;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,0.7);}
+.pill strong{color:#27ae60;}
+.pill strong.red{color:#e74c3c;}
 .hero-btns{display:flex;gap:16px;justify-content:center;flex-wrap:wrap;}
-.btn-primary{background:#1a1a1a;color:#fff;padding:16px 44px;font-size:11px;letter-spacing:3px;text-transform:uppercase;border:none;cursor:pointer;font-family:'Montserrat',sans-serif;font-weight:300;transition:all 0.3s;text-decoration:none;display:inline-block;}
-.btn-primary:hover{background:#8a7d6b;}
-.btn-outline{background:transparent;color:#1a1a1a;padding:16px 44px;font-size:11px;letter-spacing:3px;text-transform:uppercase;border:1px solid #1a1a1a;cursor:pointer;font-family:'Montserrat',sans-serif;font-weight:300;transition:all 0.3s;text-decoration:none;display:inline-block;}
-.btn-outline:hover{background:#1a1a1a;color:#fff;}
+.btn-red{background:#c0392b;color:#fff;padding:16px 48px;font-size:11px;letter-spacing:3px;text-transform:uppercase;border:none;cursor:pointer;font-family:'Montserrat',sans-serif;font-weight:300;transition:all 0.3s;text-decoration:none;display:inline-block;}
+.btn-red:hover{background:#e74c3c;}
+.btn-ghost{background:transparent;color:#fff;padding:16px 48px;font-size:11px;letter-spacing:3px;text-transform:uppercase;border:1px solid rgba(255,255,255,0.25);cursor:pointer;font-family:'Montserrat',sans-serif;font-weight:300;transition:all 0.3s;text-decoration:none;display:inline-block;}
+.btn-ghost:hover{background:rgba(255,255,255,0.08);}
+.hero-scroll{position:absolute;bottom:32px;left:50%;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:8px;color:rgba(255,255,255,0.3);font-size:9px;letter-spacing:3px;text-transform:uppercase;}
+.scroll-line{width:1px;height:40px;background:linear-gradient(to bottom,rgba(255,255,255,0.3),transparent);animation:scrollAnim 1.5s ease-in-out infinite;}
+@keyframes scrollAnim{0%,100%{opacity:1;transform:scaleY(1);}50%{opacity:0.5;transform:scaleY(0.7);}}
 
-/* ПРЕИМУЩЕСТВА */
-.features{padding:120px 60px;background:#faf9f7;}
-.section-tag{font-size:11px;letter-spacing:4px;text-transform:uppercase;color:#8a7d6b;margin-bottom:16px;font-weight:300;}
-.section-title{font-family:'Cormorant Garamond',serif;font-size:48px;font-weight:300;color:#1a1a1a;margin-bottom:64px;letter-spacing:1px;}
-.features-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:48px;}
-.feature-card{padding:48px 40px;background:#ffffff;border:1px solid #f0ede8;transition:all 0.4s;}
-.feature-card:hover{border-color:#8a7d6b;transform:translateY(-4px);}
-.feature-icon{font-size:32px;margin-bottom:24px;}
-.feature-card h3{font-family:'Cormorant Garamond',serif;font-size:24px;font-weight:400;margin-bottom:16px;color:#1a1a1a;}
-.feature-card p{font-size:13px;color:#888;line-height:1.9;font-weight:300;}
-.badge-free{display:inline-block;background:#1a1a1a;color:#fff;font-size:9px;letter-spacing:2px;padding:4px 12px;margin-bottom:16px;text-transform:uppercase;}
+/* ========== STATS BAR ========== */
+.stats-bar{background:#c0392b;padding:20px 60px;display:flex;justify-content:space-around;align-items:center;gap:20px;}
+.stat-item{text-align:center;}
+.stat-num{font-family:'Cormorant Garamond',serif;font-size:32px;font-weight:400;color:#fff;line-height:1;}
+.stat-label{font-size:10px;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,0.7);margin-top:4px;}
 
-/* КАТАЛОГ */
-.catalog{padding:120px 60px;background:#ffffff;}
-.catalog-tabs{display:flex;gap:0;margin-bottom:64px;border-bottom:1px solid #f0f0f0;}
-.tab{padding:16px 40px;font-size:12px;letter-spacing:2px;text-transform:uppercase;cursor:pointer;border:none;background:transparent;font-family:'Montserrat',sans-serif;font-weight:300;color:#999;transition:all 0.3s;border-bottom:2px solid transparent;margin-bottom:-1px;}
-.tab.active{color:#1a1a1a;border-bottom:2px solid #1a1a1a;}
-.tab:hover{color:#1a1a1a;}
-.catalog-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:32px;}
-.property-card{background:#fff;border:1px solid #f0ede8;overflow:hidden;transition:all 0.4s;cursor:pointer;}
-.property-card:hover{box-shadow:0 20px 60px rgba(0,0,0,0.08);transform:translateY(-4px);}
-.property-img{height:220px;background:linear-gradient(135deg,#f0ede8,#e8e4de);position:relative;display:flex;align-items:center;justify-content:center;overflow:hidden;}
-.property-img-text{font-family:'Cormorant Garamond',serif;font-size:18px;color:#999;font-style:italic;}
-.property-type{position:absolute;top:16px;left:16px;background:#1a1a1a;color:#fff;font-size:9px;letter-spacing:2px;padding:6px 14px;text-transform:uppercase;}
-.property-free{position:absolute;top:16px;right:16px;background:#8a7d6b;color:#fff;font-size:9px;letter-spacing:2px;padding:6px 14px;text-transform:uppercase;}
-.property-info{padding:28px;}
-.property-info h4{font-family:'Cormorant Garamond',serif;font-size:22px;font-weight:400;margin-bottom:8px;}
-.property-meta{font-size:12px;color:#999;letter-spacing:1px;margin-bottom:16px;font-weight:300;}
-.property-price{font-size:20px;font-weight:300;color:#1a1a1a;letter-spacing:1px;}
-.property-price span{font-size:12px;color:#999;}
-.property-btn{display:block;text-align:center;margin-top:20px;padding:12px;border:1px solid #1a1a1a;font-size:10px;letter-spacing:2px;text-transform:uppercase;text-decoration:none;color:#1a1a1a;transition:all 0.3s;font-family:'Montserrat',sans-serif;}
-.property-btn:hover{background:#1a1a1a;color:#fff;}
+/* ========== CATALOG SECTION ========== */
+.catalog-section{padding:100px 60px;background:#1f0808;}
+.sec-header{margin-bottom:48px;}
+.sec-tag{font-size:10px;letter-spacing:4px;text-transform:uppercase;color:#c0392b;margin-bottom:12px;font-weight:300;}
+.sec-title{font-family:'Cormorant Garamond',serif;font-size:48px;font-weight:300;color:#fff;letter-spacing:1px;margin-bottom:12px;}
+.sec-sub{font-size:13px;color:rgba(255,255,255,0.4);font-weight:300;}
 
-/* КАК ЭТО РАБОТАЕТ */
-.how{padding:120px 60px;background:#faf9f7;}
-.steps{display:grid;grid-template-columns:repeat(4,1fr);gap:40px;margin-top:64px;}
-.step{text-align:center;padding:40px 24px;}
-.step-num{font-family:'Cormorant Garamond',serif;font-size:64px;font-weight:300;color:#f0ede8;line-height:1;margin-bottom:16px;}
-.step h4{font-family:'Cormorant Garamond',serif;font-size:20px;font-weight:400;margin-bottom:12px;}
-.step p{font-size:12px;color:#999;line-height:1.9;font-weight:300;}
+/* CATALOG TABS */
+.cat-tabs{display:flex;gap:0;margin-bottom:40px;border-bottom:1px solid rgba(255,255,255,0.08);}
+.cat-tab{padding:14px 36px;font-size:11px;letter-spacing:2px;text-transform:uppercase;cursor:pointer;border:none;background:transparent;font-family:'Montserrat',sans-serif;font-weight:300;color:rgba(255,255,255,0.35);transition:all 0.3s;border-bottom:2px solid transparent;margin-bottom:-1px;}
+.cat-tab.active{color:#fff;border-bottom-color:#c0392b;}
+.cat-tab:hover{color:rgba(255,255,255,0.8);}
 
-/* ДОМКОМ */
-.domcom{padding:120px 60px;background:#1a1a1a;color:#fff;}
-.domcom .section-tag{color:#8a7d6b;}
-.domcom .section-title{color:#fff;}
-.domcom-content{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center;}
-.domcom-text p{font-size:14px;color:#aaa;line-height:2;margin-bottom:20px;font-weight:300;}
-.domcom-features{display:flex;flex-direction:column;gap:24px;}
-.domcom-feature{display:flex;align-items:flex-start;gap:20px;padding:24px;border:1px solid #2a2a2a;transition:border-color 0.3s;}
-.domcom-feature:hover{border-color:#8a7d6b;}
-.domcom-feature-icon{font-size:24px;flex-shrink:0;}
-.domcom-feature h5{font-size:13px;letter-spacing:1px;color:#fff;margin-bottom:6px;font-weight:300;}
-.domcom-feature p{font-size:12px;color:#888;line-height:1.7;font-weight:300;}
+/* SEARCH */
+.search-bar{display:flex;gap:12px;flex-wrap:wrap;align-items:flex-end;background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.07);padding:24px;margin-bottom:36px;}
+.sg{flex:1;min-width:140px;}
+.sg label{display:block;font-size:9px;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,0.35);margin-bottom:6px;}
+.sg input,.sg select{width:100%;padding:10px 14px;background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.08);color:#fff;font-family:'Montserrat',sans-serif;font-size:12px;font-weight:300;outline:none;transition:border-color 0.3s;}
+.sg input::placeholder{color:rgba(255,255,255,0.25);}
+.sg select option{background:#2a0808;}
+.sg input:focus,.sg select:focus{border-color:rgba(192,57,43,0.6);}
+.search-go{background:#c0392b;color:#fff;padding:10px 28px;font-size:10px;letter-spacing:2px;text-transform:uppercase;border:none;cursor:pointer;font-family:'Montserrat',sans-serif;white-space:nowrap;transition:all 0.3s;}
+.search-go:hover{background:#e74c3c;}
 
-/* РЕГИСТРАЦИЯ */
-.register{padding:120px 60px;background:#ffffff;text-align:center;}
-.register-box{max-width:520px;margin:0 auto;}
-.register-box .section-title{margin-bottom:16px;}
-.register-box p{font-size:13px;color:#999;margin-bottom:48px;line-height:1.9;}
-.form-group{margin-bottom:16px;text-align:left;}
-.form-group input{width:100%;padding:16px 20px;border:1px solid #f0f0f0;font-family:'Montserrat',sans-serif;font-size:13px;font-weight:300;color:#1a1a1a;outline:none;transition:border-color 0.3s;background:#faf9f7;}
-.form-group input:focus{border-color:#8a7d6b;}
-.form-group input::placeholder{color:#bbb;letter-spacing:1px;}
-.register-toggle{display:flex;gap:0;margin-bottom:32px;border:1px solid #f0f0f0;}
-.reg-tab{flex:1;padding:14px;font-size:11px;letter-spacing:2px;text-transform:uppercase;cursor:pointer;border:none;background:transparent;font-family:'Montserrat',sans-serif;font-weight:300;color:#999;transition:all 0.3s;}
-.reg-tab.active{background:#1a1a1a;color:#fff;}
+/* PROPERTY GRID */
+.prop-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;}
+.prop-card{background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.07);overflow:hidden;transition:all 0.4s;cursor:pointer;}
+.prop-card:hover{border-color:rgba(255,255,255,0.18);transform:translateY(-4px);box-shadow:0 24px 60px rgba(0,0,0,0.5);}
+.prop-img{height:210px;position:relative;overflow:hidden;background:linear-gradient(135deg,rgba(192,57,43,0.15),rgba(80,10,10,0.3));}
+.prop-img img{width:100%;height:100%;object-fit:cover;opacity:0.75;transition:opacity 0.4s;}
+.prop-card:hover .prop-img img{opacity:0.9;}
+.prop-img-ph{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-family:'Cormorant Garamond',serif;font-size:16px;color:rgba(255,255,255,0.2);font-style:italic;}
+.prop-badge{position:absolute;top:12px;left:12px;font-size:9px;letter-spacing:2px;padding:5px 12px;text-transform:uppercase;}
+.badge-rent{background:#c0392b;}
+.badge-daily{background:#8a4a00;}
+.badge-sale{background:#1a5c2a;}
+.badge-free{position:absolute;top:12px;right:12px;background:rgba(39,174,96,0.85);font-size:9px;letter-spacing:1px;padding:5px 10px;text-transform:uppercase;color:#fff;}
+.prop-body{padding:22px;}
+.prop-title{font-family:'Cormorant Garamond',serif;font-size:20px;font-weight:400;color:#fff;margin-bottom:5px;}
+.prop-meta{font-size:11px;color:rgba(255,255,255,0.35);letter-spacing:0.5px;margin-bottom:14px;}
+.prop-price-row{display:flex;align-items:baseline;justify-content:space-between;margin-bottom:16px;}
+.prop-price{font-size:18px;font-weight:300;color:#fff;letter-spacing:0.5px;}
+.prop-price sub{font-size:11px;color:rgba(255,255,255,0.4);}
+.prop-comm{font-size:10px;color:#27ae60;letter-spacing:1px;text-transform:uppercase;}
+.prop-btn{display:block;text-align:center;padding:10px;border:1px solid rgba(255,255,255,0.15);font-size:9px;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,0.7);background:none;cursor:pointer;font-family:'Montserrat',sans-serif;transition:all 0.3s;width:100%;}
+.prop-btn:hover{background:rgba(255,255,255,0.08);color:#fff;border-color:rgba(255,255,255,0.3);}
+.no-items{text-align:center;padding:60px;color:rgba(255,255,255,0.25);font-size:14px;grid-column:1/-1;}
 
-/* FOOTER */
-footer{background:#0f0f0f;color:#fff;padding:80px 60px 40px;}
-.footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:60px;margin-bottom:60px;}
-.footer-logo{font-family:'Cormorant Garamond',serif;font-size:28px;font-weight:300;letter-spacing:4px;margin-bottom:20px;}
-.footer-logo span{color:#8a7d6b;}
-.footer-desc{font-size:12px;color:#666;line-height:1.9;font-weight:300;}
-.footer-col h5{font-size:11px;letter-spacing:3px;text-transform:uppercase;color:#fff;margin-bottom:24px;font-weight:300;}
+/* ========== WHY DOMKOM ========== */
+.why-section{padding:100px 60px;background:#160505;}
+.why-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:60px;}
+.why-card{padding:40px 32px;background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.07);transition:all 0.4s;position:relative;overflow:hidden;}
+.why-card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,#c0392b,transparent);opacity:0;transition:opacity 0.4s;}
+.why-card:hover{border-color:rgba(255,255,255,0.15);transform:translateY(-4px);}
+.why-card:hover::before{opacity:1;}
+.why-icon{font-size:32px;margin-bottom:20px;}
+.why-card h3{font-family:'Cormorant Garamond',serif;font-size:22px;font-weight:400;color:#fff;margin-bottom:12px;}
+.why-card p{font-size:12px;color:rgba(255,255,255,0.45);line-height:1.9;font-weight:300;}
+.why-highlight{display:inline-block;background:rgba(192,57,43,0.15);border:1px solid rgba(192,57,43,0.3);color:#e74c3c;font-size:10px;letter-spacing:2px;padding:4px 12px;margin-bottom:16px;text-transform:uppercase;}
+
+/* ========== DOMKOM SECTION ========== */
+.domcom-section{padding:100px 60px;background:#200808;}
+.domcom-inner{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center;}
+.domcom-img{position:relative;}
+.domcom-img-wrap{background:linear-gradient(135deg,rgba(192,57,43,0.2),rgba(80,10,10,0.5));height:480px;position:relative;overflow:hidden;}
+.domcom-img-wrap img{width:100%;height:100%;object-fit:cover;opacity:0.7;mix-blend-mode:luminosity;}
+.domcom-img-caption{position:absolute;bottom:24px;left:24px;background:rgba(192,57,43,0.9);padding:16px 24px;}
+.domcom-img-caption p{font-size:11px;letter-spacing:2px;text-transform:uppercase;color:#fff;}
+.domcom-img-caption strong{font-family:'Cormorant Garamond',serif;font-size:20px;font-weight:400;display:block;margin-top:4px;}
+.domcom-text .sec-title{margin-bottom:20px;}
+.domcom-text p{font-size:13px;color:rgba(255,255,255,0.5);line-height:2;margin-bottom:16px;font-weight:300;}
+.domcom-feats{margin-top:32px;display:flex;flex-direction:column;gap:16px;}
+.domcom-feat{display:flex;align-items:flex-start;gap:16px;padding:18px 20px;background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.06);transition:border-color 0.3s;}
+.domcom-feat:hover{border-color:rgba(192,57,43,0.4);}
+.domcom-feat-ic{font-size:20px;flex-shrink:0;margin-top:2px;}
+.domcom-feat h5{font-size:12px;letter-spacing:1px;color:#fff;margin-bottom:4px;font-weight:400;}
+.domcom-feat p{font-size:11px;color:rgba(255,255,255,0.4);line-height:1.7;margin:0;}
+
+/* ========== FOR DOMCOM MANAGERS ========== */
+.manager-section{padding:100px 60px;background:#c0392b;position:relative;overflow:hidden;}
+.manager-section::before{content:'';position:absolute;right:-100px;top:-100px;width:400px;height:400px;border-radius:50%;background:rgba(255,255,255,0.05);}
+.manager-inner{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center;position:relative;z-index:1;}
+.manager-text .sec-tag{color:rgba(255,255,255,0.6);}
+.manager-text .sec-title{color:#fff;margin-bottom:20px;}
+.manager-text p{font-size:13px;color:rgba(255,255,255,0.75);line-height:2;margin-bottom:12px;}
+.manager-perks{margin-top:24px;display:flex;flex-direction:column;gap:12px;}
+.manager-perk{display:flex;align-items:center;gap:12px;font-size:12px;color:rgba(255,255,255,0.85);letter-spacing:0.5px;}
+.manager-perk::before{content:'✓';font-size:14px;color:#fff;font-weight:400;flex-shrink:0;}
+.manager-form{background:rgba(0,0,0,0.2);padding:40px;backdrop-filter:blur(10px);}
+.manager-form h4{font-family:'Cormorant Garamond',serif;font-size:28px;font-weight:300;color:#fff;margin-bottom:6px;}
+.manager-form p{font-size:12px;color:rgba(255,255,255,0.6);margin-bottom:28px;}
+.mf-group{margin-bottom:14px;}
+.mf-group input,.mf-group textarea{width:100%;padding:12px 16px;background:rgba(255,255,255,0.1);border:1px solid rgba(255,255,255,0.2);color:#fff;font-family:'Montserrat',sans-serif;font-size:12px;font-weight:300;outline:none;transition:border-color 0.3s;}
+.mf-group input::placeholder,.mf-group textarea::placeholder{color:rgba(255,255,255,0.4);}
+.mf-group input:focus,.mf-group textarea:focus{border-color:rgba(255,255,255,0.6);}
+.mf-group textarea{height:90px;resize:none;}
+.mf-submit{width:100%;background:#fff;color:#c0392b;padding:14px;font-size:11px;letter-spacing:3px;text-transform:uppercase;border:none;cursor:pointer;font-family:'Montserrat',sans-serif;font-weight:400;transition:all 0.3s;margin-top:4px;}
+.mf-submit:hover{background:#f5f5f5;}
+
+/* ========== FOOTER ========== */
+footer{background:#0f0303;padding:72px 60px 36px;}
+.footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:60px;margin-bottom:56px;}
+.footer-logo{display:flex;align-items:center;gap:12px;margin-bottom:16px;}
+.footer-logo img{height:44px;filter:brightness(0) invert(1);opacity:0.8;}
+.footer-logo-text{font-family:'Cormorant Garamond',serif;font-size:22px;letter-spacing:3px;color:#fff;}
+.footer-desc{font-size:11px;color:rgba(255,255,255,0.3);line-height:1.9;font-weight:300;}
+.footer-col h5{font-size:10px;letter-spacing:3px;text-transform:uppercase;color:rgba(255,255,255,0.5);margin-bottom:20px;font-weight:400;}
 .footer-col ul{list-style:none;}
-.footer-col ul li{margin-bottom:12px;}
-.footer-col ul li a{text-decoration:none;color:#666;font-size:12px;font-weight:300;transition:color 0.3s;}
-.footer-col ul li a:hover{color:#8a7d6b;}
-.footer-bottom{border-top:1px solid #1f1f1f;padding-top:32px;display:flex;justify-content:space-between;align-items:center;}
-.footer-bottom p{font-size:11px;color:#444;letter-spacing:1px;font-weight:300;}
+.footer-col li{margin-bottom:10px;}
+.footer-col a{text-decoration:none;color:rgba(255,255,255,0.3);font-size:12px;font-weight:300;transition:color 0.3s;}
+.footer-col a:hover{color:#fff;}
+.footer-bottom{border-top:1px solid rgba(255,255,255,0.06);padding-top:28px;display:flex;justify-content:space-between;align-items:center;}
+.footer-bottom p{font-size:10px;color:rgba(255,255,255,0.2);letter-spacing:1px;}
 
-/* MODAL */
-.modal-overlay{display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.6);z-index:2000;align-items:center;justify-content:center;}
-.modal-overlay.open{display:flex;}
-.modal{background:#fff;padding:60px;max-width:480px;width:90%;position:relative;}
-.modal-close{position:absolute;top:20px;right:24px;font-size:24px;cursor:pointer;color:#999;border:none;background:none;}
-.modal h3{font-family:'Cormorant Garamond',serif;font-size:32px;font-weight:300;margin-bottom:8px;}
-.modal p{font-size:12px;color:#999;margin-bottom:32px;}
+/* ========== MODAL ========== */
+.modal-ov{display:none;position:fixed;inset:0;background:rgba(0,0,0,0.75);z-index:2000;align-items:center;justify-content:center;backdrop-filter:blur(4px);}
+.modal-ov.open{display:flex;}
+.modal-box{background:#1f0808;border:1px solid rgba(255,255,255,0.1);padding:56px;max-width:460px;width:90%;position:relative;}
+.modal-close{position:absolute;top:18px;right:20px;font-size:22px;cursor:pointer;color:rgba(255,255,255,0.3);border:none;background:none;transition:color 0.3s;}
+.modal-close:hover{color:#fff;}
+.modal-box h3{font-family:'Cormorant Garamond',serif;font-size:32px;font-weight:300;color:#fff;margin-bottom:6px;}
+.modal-box>p{font-size:12px;color:rgba(255,255,255,0.4);margin-bottom:32px;}
+.modal-tabs{display:flex;margin-bottom:28px;border:1px solid rgba(255,255,255,0.1);}
+.mt{flex:1;padding:12px;font-size:10px;letter-spacing:2px;text-transform:uppercase;cursor:pointer;border:none;background:transparent;font-family:'Montserrat',sans-serif;color:rgba(255,255,255,0.4);transition:all 0.3s;}
+.mt.active{background:rgba(255,255,255,0.08);color:#fff;}
+.mf-g{margin-bottom:14px;}
+.mf-g input{width:100%;padding:12px 16px;background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.08);color:#fff;font-family:'Montserrat',sans-serif;font-size:12px;font-weight:300;outline:none;transition:border-color 0.3s;}
+.mf-g input::placeholder{color:rgba(255,255,255,0.25);}
+.mf-g input:focus{border-color:rgba(192,57,43,0.6);}
 
-/* RESPONSIVE */
-@media(max-width:768px){
-nav{padding:16px 24px;}
-.nav-links{display:none;}
-.hero h1{font-size:42px;}
-.features{padding:80px 24px;}
-.features-grid{grid-template-columns:1fr;}
-.catalog{padding:80px 24px;}
-.catalog-grid{grid-template-columns:1fr;}
-.how{padding:80px 24px;}
-.steps{grid-template-columns:1fr 1fr;}
-.domcom{padding:80px 24px;}
-.domcom-content{grid-template-columns:1fr;}
-.register{padding:80px 24px;}
-footer{padding:60px 24px 32px;}
-.footer-grid{grid-template-columns:1fr 1fr;}
+/* ========== PROP DETAIL MODAL ========== */
+.detail-modal{max-width:700px;padding:0;overflow:hidden;}
+.detail-img{height:320px;background:linear-gradient(135deg,rgba(192,57,43,0.2),rgba(80,10,10,0.5));position:relative;}
+.detail-img img{width:100%;height:100%;object-fit:cover;opacity:0.75;}
+.detail-body{padding:40px;}
+.detail-badges{display:flex;gap:8px;margin-bottom:16px;flex-wrap:wrap;}
+.detail-badge{font-size:9px;letter-spacing:2px;padding:5px 12px;text-transform:uppercase;}
+.db-type{background:#c0392b;color:#fff;}
+.db-free{background:rgba(39,174,96,0.2);border:1px solid #27ae60;color:#27ae60;}
+.detail-title{font-family:'Cormorant Garamond',serif;font-size:32px;font-weight:300;color:#fff;margin-bottom:8px;}
+.detail-meta{font-size:12px;color:rgba(255,255,255,0.35);margin-bottom:24px;}
+.detail-price-row{display:flex;align-items:baseline;gap:12px;margin-bottom:24px;}
+.detail-price{font-family:'Cormorant Garamond',serif;font-size:36px;font-weight:300;color:#fff;}
+.detail-price-sub{font-size:12px;color:rgba(255,255,255,0.35);}
+.detail-params{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:24px;}
+.dp{background:rgba(255,255,255,0.04);padding:14px 16px;}
+.dp-key{font-size:9px;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,0.3);margin-bottom:4px;}
+.dp-val{font-size:14px;color:#fff;font-weight:300;}
+.detail-desc{font-size:13px;color:rgba(255,255,255,0.45);line-height:1.9;margin-bottom:28px;}
+.detail-contact{display:flex;gap:12px;}
+
+/* ========== TOAST ========== */
+.toast{position:fixed;bottom:32px;right:32px;background:#27ae60;color:#fff;padding:14px 24px;font-size:12px;letter-spacing:1px;z-index:9999;opacity:0;transform:translateY(10px);transition:all 0.3s;pointer-events:none;}
+.toast.show{opacity:1;transform:translateY(0);}
+
+/* ========== PAGE TRANSITIONS ========== */
+.page{display:none;}
+.page.active{display:block;}
+
+/* ========== PROPERTY PAGES ========== */
+.prop-page-hero{padding:140px 60px 60px;background:linear-gradient(135deg,#1a0505,#2a0808);}
+.prop-page-hero h1{font-family:'Cormorant Garamond',serif;font-size:56px;font-weight:300;color:#fff;margin-bottom:12px;}
+.prop-page-hero p{font-size:13px;color:rgba(255,255,255,0.4);}
+.prop-page-content{padding:60px 60px 100px;background:#1f0808;}
+
+/* ========== ANIMATIONS ========== */
+.fade-in{opacity:0;transform:translateY(20px);transition:opacity 0.7s ease,transform 0.7s ease;}
+.fade-in.visible{opacity:1;transform:translateY(0);}
+
+/* ========== RESPONSIVE ========== */
+@media(max-width:900px){
+  nav{padding:14px 20px;}
+  .nav-links{display:none;}
+  .hero h1{font-size:44px;}
+  .stats-bar{padding:16px 20px;flex-wrap:wrap;gap:16px;}
+  .catalog-section,.why-section,.domcom-section,.manager-section{padding:60px 20px;}
+  .prop-grid{grid-template-columns:1fr 1fr;}
+  .why-grid{grid-template-columns:1fr;}
+  .domcom-inner,.manager-inner{grid-template-columns:1fr;gap:40px;}
+  footer{padding:48px 20px 24px;}
+  .footer-grid{grid-template-columns:1fr 1fr;}
+  .prop-page-hero{padding:100px 20px 40px;}
+  .prop-page-content{padding:40px 20px 60px;}
+}
+@media(max-width:600px){
+  .prop-grid{grid-template-columns:1fr;}
+  .hero h1{font-size:36px;}
+  .detail-params{grid-template-columns:1fr 1fr;}
+  .footer-grid{grid-template-columns:1fr;}
 }
 </style>
 </head>
 <body>
 
 <!-- NAV -->
-<nav>
-  <a href="#" class="logo">DOM<span>COM</span></a>
+<nav id="mainNav">
+  <a href="#" class="logo" onclick="showPage('home')">
+    <img src="logo.png" alt="ДомКом" onerror="this.style.display='none'">
+    <span class="logo-text">ДомКом</span>
+  </a>
   <ul class="nav-links">
-    <li><a href="#catalog">Каталог</a></li>
-    <li><a href="#how">Как это работает</a></li>
-    <li><a href="#domcom">О нас</a></li>
-    <li><a href="#contact">Контакты</a></li>
+    <li><a onclick="showPage('home')" id="nav-home" class="active">Главная</a></li>
+    <li><a onclick="showPage('rent')" id="nav-rent">Аренда</a></li>
+    <li><a onclick="showPage('daily')" id="nav-daily">Посуточно</a></li>
+    <li><a onclick="showPage('sale')" id="nav-sale">Купить / Продать</a></li>
   </ul>
-  <button class="nav-btn" onclick="openModal()">Войти</button>
+  <div class="nav-right">
+    <button class="nav-btn" onclick="openModal('auth')">Войти</button>
+    <button class="nav-btn nav-btn-main" onclick="scrollToManager()">Я — Домком</button>
+  </div>
 </nav>
 
-<!-- HERO -->
-<section class="hero">
-  <div class="hero-content">
-    <p class="hero-tag">Недвижимость без посредников</p>
-    <h1>Аренда жилья<br><em>без комиссии</em><br>напрямую</h1>
-    <p>Мы работаем напрямую с управляющими жилых комплексов — домкомами. Они знают каждого собственника. Вы — без переплат.</p>
-    <div class="hero-btns">
-      <a href="#catalog" class="btn-primary">Смотреть квартиры</a>
-      <a href="#how" class="btn-outline">Как это работает</a>
-    </div>
-  </div>
-</section>
+<!-- ===================== HOME PAGE ===================== -->
+<div class="page active" id="page-home">
 
-<!-- ПРЕИМУЩЕСТВА -->
-<section class="features" id="features">
-  <div>
-    <p class="section-tag">Почему DomCom</p>
-    <h2 class="section-title">Три причины выбрать нас</h2>
-  </div>
-  <div class="features-grid">
-    <div class="feature-card">
-      <span class="badge-free">0% комиссии</span>
-      <div class="feature-icon">🏠</div>
-      <h3>Аренда без комиссии</h3>
-      <p>Никаких агентских сборов. Вы договариваетесь напрямую с собственником через управляющего вашего дома.</p>
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-bg"></div>
+    <div class="hero-overlay"></div>
+    <div class="hero-content">
+      <div class="hero-badge">🏠 Работаем только через домкомов</div>
+      <h1>Жильё напрямую<br>от <em>собственника</em><br>без комиссии</h1>
+      <p class="hero-desc">ДомКом — сервис аренды и продажи недвижимости через управляющих жилых комплексов. Никаких агентств, никаких переплат.</p>
+      <div class="hero-pills">
+        <div class="pill"><strong>0%</strong> комиссии при аренде</div>
+        <div class="pill"><strong class="red">1.5%</strong> при покупке/продаже</div>
+        <div class="pill">🔑 Ключи через домкома</div>
+      </div>
+      <div class="hero-btns">
+        <a class="btn-red" onclick="showPage('rent')">Смотреть аренду</a>
+        <a class="btn-ghost" onclick="showPage('home');setTimeout(()=>scrollToSection('how'),100)">Как это работает</a>
+      </div>
     </div>
-    <div class="feature-card">
-      <div class="feature-icon">🤝</div>
-      <h3>Через домкома</h3>
-      <p>Управляющий жилого комплекса — ваш проводник. Ключи, домофон, шлагбаум, правила дома — всё рядом.</p>
+    <div class="hero-scroll">
+      <div class="scroll-line"></div>
+      <span>Scroll</span>
     </div>
-    <div class="feature-card">
-      <div class="feature-icon">🔑</div>
-      <h3>Покупка и продажа</h3>
-      <p>Хотите купить или продать квартиру? Мы поможем. Прозрачные условия и честная комиссия.</p>
-    </div>
-  </div>
-</section>
+  </section>
 
-<!-- КАТАЛОГ -->
-<section class="catalog" id="catalog">
-  <div>
-    <p class="section-tag">Каталог</p>
-    <h2 class="section-title">Найдите своё жильё</h2>
-  </div>
-  <div class="catalog-tabs">
-    <button class="tab active" onclick="switchTab(this,'rent')">Аренда</button>
-    <button class="tab" onclick="switchTab(this,'daily')">Посуточно</button>
-    <button class="tab" onclick="switchTab(this,'buy')">Купить</button>
-  </div>
-
-  <!-- АРЕНДА -->
-  <div class="catalog-grid" id="tab-rent">
-    <div class="property-card">
-      <div class="property-img">
-        <span class="property-type">Аренда</span>
-        <span class="property-free">Без комиссии</span>
-        <span class="property-img-text">ЖК «Центральный»</span>
-      </div>
-      <div class="property-info">
-        <h4>2-комнатная квартира</h4>
-        <p class="property-meta">54 м² · 8 этаж · ЖК Центральный</p>
-        <div class="property-price">85 000 ₸ <span>/ месяц</span></div>
-        <a href="#" class="property-btn" onclick="openModal()">Узнать подробнее</a>
-      </div>
+  <!-- STATS -->
+  <div class="stats-bar">
+    <div class="stat-item">
+      <div class="stat-num">0%</div>
+      <div class="stat-label">Комиссия при аренде</div>
     </div>
-    <div class="property-card">
-      <div class="property-img">
-        <span class="property-type">Аренда</span>
-        <span class="property-free">Без комиссии</span>
-        <span class="property-img-text">ЖК «Riverside»</span>
-      </div>
-      <div class="property-info">
-        <h4>1-комнатная квартира</h4>
-        <p class="property-meta">38 м² · 4 этаж · ЖК Riverside</p>
-        <div class="property-price">65 000 ₸ <span>/ месяц</span></div>
-        <a href="#" class="property-btn" onclick="openModal()">Узнать подробнее</a>
-      </div>
+    <div class="stat-item">
+      <div class="stat-num">47+</div>
+      <div class="stat-label">Партнёров домкомов</div>
     </div>
-    <div class="property-card">
-      <div class="property-img">
-        <span class="property-type">Аренда</span>
-        <span class="property-free">Без комиссии</span>
-        <span class="property-img-text">ЖК «Премиум»</span>
-      </div>
-      <div class="property-info">
-        <h4>3-комнатная квартира</h4>
-        <p class="property-meta">78 м² · 12 этаж · ЖК Премиум</p>
-        <div class="property-price">120 000 ₸ <span>/ месяц</span></div>
-        <a href="#" class="property-btn" onclick="openModal()">Узнать подробнее</a>
-      </div>
+    <div class="stat-item">
+      <div class="stat-num">320+</div>
+      <div class="stat-label">Объектов в каталоге</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num">1 день</div>
+      <div class="stat-label">До заселения</div>
     </div>
   </div>
 
-  <!-- ПОСУТОЧНО -->
-  <div class="catalog-grid" id="tab-daily" style="display:none;">
-    <div class="property-card">
-      <div class="property-img">
-        <span class="property-type">Посуточно</span>
-        <span class="property-free">Без комиссии</span>
-        <span class="property-img-text">ЖК «Центральный»</span>
+  <!-- WHY -->
+  <section class="why-section" id="how">
+    <div class="sec-header">
+      <p class="sec-tag">Почему ДомКом</p>
+      <h2 class="sec-title">Три причины выбрать нас</h2>
+      <p class="sec-sub">Мы изменили способ аренды жилья в Казахстане</p>
+    </div>
+    <div class="why-grid">
+      <div class="why-card fade-in">
+        <span class="why-highlight">0% комиссии</span>
+        <div class="why-icon">🏠</div>
+        <h3>Аренда без комиссии</h3>
+        <p>Никаких агентских сборов. Вы выходите напрямую на собственника через управляющего домом — домкома.</p>
       </div>
-      <div class="property-info">
-        <h4>Студия</h4>
-        <p class="property-meta">32 м² · 5 этаж · Центр города</p>
-        <div class="property-price">8 000 ₸ <span>/ сутки</span></div>
-        <a href="#" class="property-btn" onclick="openModal()">Забронировать</a>
+      <div class="why-card fade-in">
+        <div class="why-icon">🤝</div>
+        <h3>Через домкома</h3>
+        <p>Домком знает каждую квартиру, каждого собственника. Он ваш проводник: ключи, домофон, шлагбаум, договор.</p>
+      </div>
+      <div class="why-card fade-in">
+        <div class="why-icon">🔑</div>
+        <h3>Купить и продать</h3>
+        <p>Покупка и продажа через ДомКом — честная комиссия 1.5%, полная прозрачность сделки и юридическая поддержка.</p>
       </div>
     </div>
-    <div class="property-card">
-      <div class="property-img">
-        <span class="property-type">Посуточно</span>
-        <span class="property-free">Без комиссии</span>
-        <span class="property-img-text">ЖК «Riverside»</span>
-      </div>
-      <div class="property-info">
-        <h4>1-комнатная квартира</h4>
-        <p class="property-meta">40 м² · 7 этаж · Вид на реку</p>
-        <div class="property-price">12 000 ₸ <span>/ сутки</span></div>
-        <a href="#" class="property-btn" onclick="openModal()">Забронировать</a>
-      </div>
-    </div>
-    <div class="property-card">
-      <div class="property-img">
-        <span class="property-type">Посуточно</span>
-        <span class="property-free">Без комиссии</span>
-        <span class="property-img-text">ЖК «Бизнес»</span>
-      </div>
-      <div class="property-info">
-        <h4>2-комнатная квартира</h4>
-        <p class="property-meta">56 м² · 10 этаж · Бизнес-центр</p>
-        <div class="property-price">16 000 ₸ <span>/ сутки</span></div>
-        <a href="#" class="property-btn" onclick="openModal()">Забронировать</a>
-      </div>
-    </div>
-  </div>
+  </section>
 
-  <!-- КУПИТЬ -->
-  <div class="catalog-grid" id="tab-buy" style="display:none;">
-    <div class="property-card">
-      <div class="property-img">
-        <span class="property-type">Продажа</span>
-        <span class="property-img-text">ЖК «Премиум»</span>
-      </div>
-      <div class="property-info">
-        <h4>2-комнатная квартира</h4>
-        <p class="property-meta">58 м² · 9 этаж · ЖК Премиум</p>
-        <div class="property-price">28 500 000 ₸</div>
-        <a href="#" class="property-btn" onclick="openModal()">Узнать подробнее</a>
-      </div>
-    </div>
-    <div class="property-card">
-      <div class="property-img">
-        <span class="property-type">Продажа</span>
-        <span class="property-img-text">ЖК «Новый»</span>
-      </div>
-      <div class="property-info">
-        <h4>3-комнатная квартира</h4>
-        <p class="property-meta">82 м² · 6 этаж · ЖК Новый</p>
-        <div class="property-price">42 000 000 ₸</div>
-        <a href="#" class="property-btn" onclick="openModal()">Узнать подробнее</a>
-      </div>
-    </div>
-    <div class="property-card">
-      <div class="property-img">
-        <span class="property-type">Продажа</span>
-        <span class="property-img-text">ЖК «Светлый»</span>
-      </div>
-      <div class="property-info">
-        <h4>1-комнатная квартира</h4>
-        <p class="property-meta">42 м² · 3 этаж · ЖК Светлый</p>
-        <div class="property-price">18 900 000 ₸</div>
-        <a href="#" class="property-btn" onclick="openModal()">Узнать подробнее</a>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- КАК ЭТО РАБОТАЕТ -->
-<section class="how" id="how">
-  <p class="section-tag">Процесс</p>
-  <h2 class="section-title">Как это работает</h2>
-  <div class="steps">
-    <div class="step">
-      <div class="step-num">01</div>
-      <h4>Зарегистрируйтесь</h4>
-      <p>Создайте аккаунт за 1 минуту. Просто имя и номер телефона.</p>
-    </div>
-    <div class="step">
-      <div class="step-num">02</div>
-      <h4>Выберите квартиру</h4>
-      <p>Просмотрите каталог. Аренда, посуточно или покупка — всё в одном месте.</p>
-    </div>
-    <div class="step">
-      <div class="step-num">03</div>
-      <h4>Свяжитесь с домкомом</h4>
-      <p>Управляющий дома — ваш помощник. Он знает собственника и все детали.</p>
-    </div>
-    <div class="step">
-      <div class="step-num">04</div>
-      <h4>Заезжайте</h4>
-      <p>Договор, ключи, домофон, шлагбаум — домком поможет со всем.</p>
-    </div>
-  </div>
-</section>
-
-<!-- О ДОМКОМАХ -->
-<section class="domcom" id="domcom">
-  <div class="domcom-content">
-    <div class="domcom-text">
-      <p class="section-tag">Наша система</p>
-      <h2 class="section-title">Что такое Домком?</h2>
-      <p>Домком — управляющий жилого комплекса. Он знает каждого собственника в доме, каждую квартиру и все детали проживания.</p>
-      <p>Мы выстроили сеть партнёрств с домкомами по всему городу. Это значит — вы получаете жильё напрямую от собственника, без агентств и переплат.</p>
-    </div>
-    <div class="domcom-features">
-      <div class="domcom-feature">
-        <span class="domcom-feature-icon">🏢</span>
-        <div>
-          <h5>Знает дом изнутри</h5>
-          <p>Расскажет об инфраструктуре, соседях и особенностях дома до заселения.</p>
+  <!-- DOMCOM SECTION -->
+  <section class="domcom-section">
+    <div class="domcom-inner">
+      <div class="domcom-img fade-in">
+        <div class="domcom-img-wrap">
+          <img src="logo.png" alt="Домком" style="object-fit:contain;padding:40px;">
+        </div>
+        <div class="domcom-img-caption">
+          <p>Управляющий дома</p>
+          <strong>Ваш Домком</strong>
         </div>
       </div>
-      <div class="domcom-feature">
-        <span class="domcom-feature-icon">🔐</span>
-        <div>
-          <h5>Ключи и доступы</h5>
-          <p>Домофон, шлагбаум, паркинг — всё оформляется через управляющего.</p>
-        </div>
-      </div>
-      <div class="domcom-feature">
-        <span class="domcom-feature-icon">📋</span>
-        <div>
-          <h5>Документы и договор</h5>
-          <p>Поможет оформить всё правильно и прозрачно.</p>
-        </div>
-      </div>
-      <div class="domcom-feature">
-        <span class="domcom-feature-icon">📞</span>
-        <div>
-          <h5>Всегда на связи</h5>
-          <p>После заселения домком остаётся вашим контактом по всем вопросам.</p>
+      <div class="domcom-text fade-in">
+        <p class="sec-tag">Наша система</p>
+        <h2 class="sec-title">Что такое Домком?</h2>
+        <p>Домком — это управляющий жилого комплекса. Он знает каждого собственника в доме, каждую квартиру и все детали проживания.</p>
+        <p>Мы выстроили сеть партнёрств с домкомами по всему городу. Это значит — вы получаете жильё напрямую, без лишних звеньев.</p>
+        <div class="domcom-feats">
+          <div class="domcom-feat fade-in">
+            <span class="domcom-feat-ic">🏢</span>
+            <div>
+              <h5>Знает дом изнутри</h5>
+              <p>Расскажет об инфраструктуре, соседях и особенностях до заселения.</p>
+            </div>
+          </div>
+          <div class="domcom-feat fade-in">
+            <span class="domcom-feat-ic">🔐</span>
+            <div>
+              <h5>Ключи и доступы</h5>
+              <p>Домофон, шлагбаум, паркинг — всё оформляется через управляющего.</p>
+            </div>
+          </div>
+          <div class="domcom-feat fade-in">
+            <span class="domcom-feat-ic">📋</span>
+            <div>
+              <h5>Договор и документы</h5>
+              <p>Поможет оформить всё правильно, прозрачно и быстро.</p>
+            </div>
+          </div>
+          <div class="domcom-feat fade-in">
+            <span class="domcom-feat-ic">📞</span>
+            <div>
+              <h5>Всегда на связи</h5>
+              <p>После заселения домком остаётся вашим контактом по всем вопросам.</p>
+            </div>
+          </div>
         </div>
       </div>
     </div>
-  </div>
-</section>
+  </section>
 
-<!-- РЕГИСТРАЦИЯ -->
-<section class="register" id="register">
-  <div class="register-box">
-    <p class="section-tag">Начните сейчас</p>
-    <h2 class="section-title">Войдите или создайте аккаунт</h2>
-    <p>Регистрация займёт минуту. Доступ к каталогу и связи с домкомом — сразу.</p>
-    <div class="register-toggle">
-      <button class="reg-tab active" onclick="switchRegTab(this,'login')">Войти</button>
-      <button class="reg-tab" onclick="switchRegTab(this,'signup')">Регистрация</button>
+  <!-- FOR MANAGERS -->
+  <section class="manager-section" id="for-managers">
+    <div class="manager-inner">
+      <div class="manager-text">
+        <p class="sec-tag">Для управляющих</p>
+        <h2 class="sec-title">Вы — домком?<br>Подключитесь к нам</h2>
+        <p>Если вы управляете жилым комплексом — мы поможем вам монетизировать свободные квартиры собственников без лишних хлопот.</p>
+        <p>Просто заполните форму — мы свяжемся и объясним как всё работает.</p>
+        <div class="manager-perks">
+          <div class="manager-perk">Бесплатное размещение объектов</div>
+          <div class="manager-perk">Личный кабинет для управления</div>
+          <div class="manager-perk">Поток клиентов без затрат на рекламу</div>
+          <div class="manager-perk">Юридическая поддержка сделок</div>
+          <div class="manager-perk">Вознаграждение за каждую сделку</div>
+        </div>
+      </div>
+      <div class="manager-form">
+        <h4>Стать партнёром</h4>
+        <p>Оставьте контакты — позвоним в течение 2 часов</p>
+        <div class="mf-group">
+          <input type="text" placeholder="Ваше имя" id="mf-name">
+        </div>
+        <div class="mf-group">
+          <input type="tel" placeholder="Номер телефона" id="mf-phone">
+        </div>
+        <div class="mf-group">
+          <input type="text" placeholder="Название ЖК / адрес" id="mf-jk">
+        </div>
+        <div class="mf-group">
+          <textarea placeholder="Кратко о вашем доме: кол-во квартир, свободные объекты..." id="mf-msg"></textarea>
+        </div>
+        <button class="mf-submit" onclick="submitManager()">Отправить заявку</button>
+      </div>
+    </div>
+  </section>
+
+</div><!-- end home page -->
+
+<!-- ===================== RENT PAGE ===================== -->
+<div class="page" id="page-rent">
+  <div class="prop-page-hero">
+    <p class="sec-tag">Каталог</p>
+    <h1>Аренда квартир</h1>
+    <p>Без комиссии · Напрямую от собственника · Через домкома</p>
+  </div>
+  <div class="prop-page-content">
+    <div class="search-bar">
+      <div class="sg">
+        <label>Район</label>
+        <select id="rent-district">
+          <option value="">Все районы</option>
+          <option>Алмалинский</option>
+          <option>Бостандыкский</option>
+          <option>Медеуский</option>
+          <option>Наурызбайский</option>
+          <option>Турксибский</option>
+        </select>
+      </div>
+      <div class="sg">
+        <label>Комнат</label>
+        <select id="rent-rooms">
+          <option value="">Любое</option>
+          <option>Студия</option>
+          <option>1</option>
+          <option>2</option>
+          <option>3</option>
+          <option>4+</option>
+        </select>
+      </div>
+      <div class="sg">
+        <label>Цена от (₸)</label>
+        <input type="number" id="rent-from" placeholder="50 000">
+      </div>
+      <div class="sg">
+        <label>Цена до (₸)</label>
+        <input type="number" id="rent-to" placeholder="200 000">
+      </div>
+      <button class="search-go" onclick="filterProps('rent')">Найти</button>
+    </div>
+    <div class="prop-grid" id="grid-rent"></div>
+  </div>
 </div>
 
-<!-- ВХОД -->
-<div id="form-login">
-  <div class="form-group">
-    <input type="tel" placeholder="Номер телефона">
+<!-- ===================== DAILY PAGE ===================== -->
+<div class="page" id="page-daily">
+  <div class="prop-page-hero">
+    <p class="sec-tag">Каталог</p>
+    <h1>Посуточная аренда</h1>
+    <p>Без комиссии · Бронирование напрямую · Заезд через домкома</p>
   </div>
-  <div class="form-group">
-    <input type="password" placeholder="Пароль">
+  <div class="prop-page-content">
+    <div class="search-bar">
+      <div class="sg">
+        <label>Дата заезда</label>
+        <input type="date" id="daily-in">
+      </div>
+      <div class="sg">
+        <label>Дата выезда</label>
+        <input type="date" id="daily-out">
+      </div>
+      <div class="sg">
+        <label>Комнат</label>
+        <select id="daily-rooms">
+          <option value="">Любое</option>
+          <option>Студия</option>
+          <option>1</option>
+          <option>2</option>
+          <option>3</option>
+        </select>
+      </div>
+      <div class="sg">
+        <label>Макс. цена (₸/сутки)</label>
+        <input type="number" id="daily-max" placeholder="20 000">
+      </div>
+      <button class="search-go" onclick="filterProps('daily')">Найти</button>
+    </div>
+    <div class="prop-grid" id="grid-daily"></div>
   </div>
-  <button class="btn-primary" style="width:100%;padding:18px;" onclick="alert('Добро пожаловать!')">Войти</button>
 </div>
 
-<!-- РЕГИСТРАЦИЯ -->
-<div id="form-signup" style="display:none;">
-  <div class="form-group">
-    <input type="text" placeholder="Ваше имя">
+<!-- ===================== SALE PAGE ===================== -->
+<div class="page" id="page-sale">
+  <div class="prop-page-hero">
+    <p class="sec-tag">Каталог</p>
+    <h1>Купить квартиру</h1>
+    <p>Комиссия 1.5% · Прозрачная сделка · Юридическая поддержка</p>
   </div>
-  <div class="form-group">
-    <input type="tel" placeholder="Номер телефона">
+  <div class="prop-page-content">
+    <div class="search-bar">
+      <div class="sg">
+        <label>Район</label>
+        <select id="sale-district">
+          <option value="">Все районы</option>
+          <option>Алмалинский</option>
+          <option>Бостандыкский</option>
+          <option>Медеуский</option>
+          <option>Наурызбайский</option>
+        </select>
+      </div>
+      <div class="sg">
+        <label>Комнат</label>
+        <select id="sale-rooms">
+          <option value="">Любое</option>
+          <option>1</option>
+          <option>2</option>
+          <option>3</option>
+          <option>4+</option>
+        </select>
+      </div>
+      <div class="sg">
+        <label>Цена от (₸)</label>
+        <input type="number" id="sale-from" placeholder="10 000 000">
+      </div>
+      <div class="sg">
+        <label>Цена до (₸)</label>
+        <input type="number" id="sale-to" placeholder="100 000 000">
+      </div>
+      <button class="search-go" onclick="filterProps('sale')">Найти</button>
+    </div>
+    <div class="prop-grid" id="grid-sale"></div>
   </div>
-  <div class="form-group">
-    <input type="password" placeholder="Придумайте пароль">
-  </div>
-  <button class="btn-primary" style="width:100%;padding:18px;" onclick="alert('Аккаунт создан!')">Зарегистрироваться</button>
 </div>
-</div>
-</section>
 
 <!-- FOOTER -->
-<footer id="contact">
-<div class="footer-grid">
-<div>
-<div class="footer-logo">DOM<span>COM</span></div>
-<p class="footer-desc">Аренда жилья без комиссии напрямую от собственников через управляющих жилых комплексов.</p>
-</div>
-<div class="footer-col">
-<h5>Каталог</h5>
-<ul>
-<li><a href="#catalog">Аренда</a></li>
-<li><a href="#catalog">Посуточно</a></li>
-<li><a href="#catalog">Купить</a></li>
-</ul>
-</div>
-<div class="footer-col">
-<h5>О нас</h5>
-<ul>
-<li><a href="#how">Как это работает</a></li>
-<li><a href="#domcom">Что такое домком</a></li>
-<li><a href="#features">Преимущества</a></li>
-</ul>
-</div>
-<div class="footer-col">
-<h5>Контакты</h5>
-<ul>
-<li><a href="tel:+77001234567">+7 700 123 45 67</a></li>
-<li><a href="mailto:info@domcom.kz">info@domcom.kz</a></li>
-<li><a href="#">Instagram</a></li>
-<li><a href="#">WhatsApp</a></li>
-</ul>
-</div>
-</div>
-<div class="footer-bottom">
-<p>© 2024 DomCom. Все права защищены.</p>
-<p>Сделано с заботой о жильцах</p>
-</div>
+<footer>
+  <div class="footer-grid">
+    <div>
+      <div class="footer-logo">
+        <img src="logo.png" alt="ДомКом" onerror="this.style.display='none'">
+        <span class="footer-logo-text">ДомКом</span>
+      </div>
+      <p class="footer-desc">Аренда и продажа жилья без лишних комиссий — напрямую через управляющих жилых комплексов.</p>
+    </div>
+    <div class="footer-col">
+      <h5>Каталог</h5>
+      <ul>
+        <li><a onclick="showPage('rent')">Аренда</a></li>
+        <li><a onclick="showPage('daily')">Посуточно</a></li>
+        <li><a onclick="showPage('sale')">Купить</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h5>О нас</h5>
+      <ul>
+        <li><a onclick="showPage('home');setTimeout(()=>scrollToSection('how'),100)">Как это работает</a></li>
+        <li><a onclick="showPage('home')">Что такое домком</a></li>
+        <li><a onclick="scrollToManager()">Стать партнёром</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h5>Контакты</h5>
+      <ul>
+        <li><a href="tel:+77001234567">+7 700 123 45 67</a></li>
+        <li><a href="mailto:info@domcom.kz">info@domcom.kz</a></li>
+        <li><a href="#">Instagram</a></li>
+        <li><a href="#">WhatsApp</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>© 2024 ДомКом. Все права защищены.</p>
+    <p>Сделано с заботой о жильцах</p>
+  </div>
 </footer>
 
-<!-- MODAL -->
-<div class="modal-overlay" id="modal" onclick="closeModalOutside(event)">
-<div class="modal">
-<button class="modal-close" onclick="closeModal()">×</button>
-<h3>Войдите в аккаунт</h3>
-<p>Чтобы связаться с домкомом — войдите или зарегистрируйтесь</p>
-<div class="form-group">
-<input type="tel" placeholder="Номер телефона">
+<!-- AUTH MODAL -->
+<div class="modal-ov" id="modal-auth" onclick="closeModalOutside(event,'modal-auth')">
+  <div class="modal-box">
+    <button class="modal-close" onclick="closeModal('modal-auth')">×</button>
+    <h3>Добро пожаловать</h3>
+    <p>Войдите или создайте аккаунт чтобы связаться с домкомом</p>
+    <div class="modal-tabs">
+      <button class="mt active" onclick="switchModalTab(this,'login')">Войти</button>
+      <button class="mt" onclick="switchModalTab(this,'signup')">Регистрация</button>
+    </div>
+    <div id="modal-login">
+      <div class="mf-g"><input type="tel" placeholder="Номер телефона" id="auth-phone"></div>
+      <div class="mf-g"><input type="password" placeholder="Пароль" id="auth-pass"></div>
+      <button class="btn-red" style="width:100%;padding:14px;margin-bottom:10px;" onclick="doLogin()">Войти</button>
+    </div>
+    <div id="modal-signup" style="display:none;">
+      <div class="mf-g"><input type="text" placeholder="Ваше имя" id="reg-name"></div>
+      <div class="mf-g"><input type="tel" placeholder="Номер телефона" id="reg-phone"></div>
+      <div class="mf-g"><input type="password" placeholder="Придумайте пароль" id="reg-pass"></div>
+      <button class="btn-red" style="width:100%;padding:14px;" onclick="doRegister()">Зарегистрироваться</button>
+    </div>
+  </div>
 </div>
-<div class="form-group">
-<input type="password" placeholder="Пароль">
+
+<!-- PROPERTY DETAIL MODAL -->
+<div class="modal-ov" id="modal-detail" onclick="closeModalOutside(event,'modal-detail')">
+  <div class="modal-box detail-modal">
+    <button class="modal-close" onclick="closeModal('modal-detail')" style="z-index:10;color:#fff;background:rgba(0,0,0,0.5);width:32px;height:32px;border-radius:50%;display:flex;align-items:center;justify-content:center;">×</button>
+    <div class="detail-img" id="detail-img"></div>
+    <div class="detail-body">
+      <div class="detail-badges" id="detail-badges"></div>
+      <div class="detail-title" id="detail-title"></div>
+      <div class="detail-meta" id="detail-meta"></div>
+      <div class="detail-price-row">
+        <div class="detail-price" id="detail-price"></div>
+        <div class="detail-price-sub" id="detail-price-sub"></div>
+      </div>
+      <div class="detail-params" id="detail-params"></div>
+      <div class="detail-desc" id="detail-desc"></div>
+      <div class="detail-contact">
+        <button class="btn-red" onclick="closeModal('modal-detail');openModal('auth')">Связаться с домкомом</button>
+        <button class="btn-ghost" onclick="showToast('Добавлено в избранное ❤️')">В избранное</button>
+      </div>
+    </div>
+  </div>
 </div>
-<button class="btn-primary" style="width:100%;padding:18px;margin-bottom:12px;" onclick="closeModal()">Войти</button>
-<button class="btn-outline" style="width:100%;padding:18px;" onclick="closeModal()">Создать аккаунт</button>
-</div>
-</div>
+
+<!-- TOAST -->
+<div class="toast" id="toast"></div>
 
 <script>
-// ТАБЫ КАТАЛОГА
-function switchTab(el, tab) {
-document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
-el.classList.add('active');
-document.getElementById('tab-rent').style.display = 'none';
-document.getElementById('tab-daily').style.display = 'none';
-document.getElementById('tab-buy').style.display = 'none';
-document.getElementById('tab-' + tab).style.display = 'grid';
+// ========== DATA ==========
+const properties = {
+  rent: [
+    {id:'r1',title:'2-комнатная квартира',jk:'ЖК «Центральный»',meta:'54 м² · 8 этаж · Алмалинский район',price:'85 000 ₸',priceSub:'/ месяц',free:true,params:[{k:'Площадь',v:'54 м²'},{k:'Этаж',v:'8 из 16'},{k:'Комнат',v:'2'},{k:'Тип',v:'Новостройка'},{k:'Мебель',v:'Есть'},{k:'Состояние',v:'Евро'}],desc:'Просторная двушка с панорамными окнами. Развитая инфраструктура, охраняемый двор, подземный паркинг. Домком поможет с оформлением.',color:'135deg,rgba(192,57,43,0.3),rgba(80,10,10,0.5)'},
+    {id:'r2',title:'1-комнатная квартира',jk:'ЖК «Riverside»',meta:'38 м² · 4 этаж · Медеуский район',price:'65 000 ₸',priceSub:'/ месяц',free:true,params:[{k:'Площадь',v:'38 м²'},{k:'Этаж',v:'4 из 12'},{k:'Комнат',v:'1'},{k:'Тип',v:'Новостройка'},{k:'Мебель',v:'Частично'},{k:'Состояние',v:'Стандарт'}],desc:'Уютная однушка у реки. Тихий двор, детская площадка, магазины рядом.',color:'135deg,rgba(40,80,120,0.3),rgba(10,30,60,0.5)'},
+    {id:'r3',title:'3-комнатная квартира',jk:'ЖК «Премиум»',meta:'78 м² · 12 этаж · Бостандыкский район',price:'120 000 ₸',priceSub:'/ месяц',free:true,params:[{k:'Площадь',v:'78 м²'},{k:'Этаж',v:'12 из 20'},{k:'Комнат',v:'3'},{k:'Тип',v:'Бизнес-класс'},{k:'Мебель',v:'Полностью'},{k:'Состояние',v:'Люкс'}],desc:'Трёхкомнатная с видом на горы. Полностью меблирована, техника включена.',color:'135deg,rgba(80,50,120,0.3),rgba(30,10,60,0.5)'},
+    {id:'r4',title:'Студия',jk:'ЖК «Молодёжный»',meta:'28 м² · 3 этаж · Наурызбайский район',price:'45 000 ₸',priceSub:'/ месяц',free:true,params:[{k:'Площадь',v:'28 м²'},{k:'Этаж',v:'3 из 9'},{k:'Комнат',v:'Студия'},{k:'Тип',v:'Эконом'},{k:'Мебель',v:'Есть'},{k:'Состояние',v:'Хорошее'}],desc:'Компактная студия для одного или пары. Всё необходимое есть.',color:'135deg,rgba(20,80,40,0.3),rgba(5,30,10,0.5)'},
+    {id:'r5',title:'2-комнатная квартира',jk:'ЖК «Алтын»',meta:'62 м² · 6 этаж · Алмалинский район',price:'95 000 ₸',priceSub:'/ месяц',free:true,params:[{k:'Площадь',v:'62 м²'},{k:'Этаж',v:'6 из 14'},{k:'Комнат',v:'2'},{k:'Тип',v:'Новостройка'},{k:'Мебель',v:'Есть'},{k:'Состояние',v:'Евро'}],desc:'Современная двушка с дизайнерским ремонтом. Закрытый двор.',color:'135deg,rgba(150,100,20,0.3),rgba(60,30,5,0.5)'},
+    {id:'r6',title:'4-комнатная квартира',jk:'ЖК «Резиденция»',meta:'110 м² · 15 этаж · Медеуский район',price:'220 000 ₸',priceSub:'/ месяц',free:true,params:[{k:'Площадь',v:'110 м²'},{k:'Этаж',v:'15 из 22'},{k:'Комнат',v:'4'},{k:'Тип',v:'Премиум'},{k:'Мебель',v:'Полностью'},{k:'Состояние',v:'Люкс'}],desc:'Элитные апартаменты с панорамным видом. Консьерж, спа, паркинг.',color:'135deg,rgba(100,20,20,0.4),rgba(40,5,5,0.6)'},
+  ],
+  daily: [
+    {id:'d1',title:'Студия',jk:'ЖК «Центральный»',meta:'32 м² · 5 этаж · Центр города',price:'8 000 ₸',priceSub:'/ сутки',free:true,params:[{k:'Площадь',v:'32 м²'},{k:'Этаж',v:'5 из 16'},{k:'Комнат',v:'Студия'},{k:'Wi-Fi',v:'Есть'},{k:'Посуда',v:'Есть'},{k:'Парковка',v:'Нет'}],desc:'Уютная студия в центре. Всё для краткосрочного проживания.',color:'135deg,rgba(192,57,43,0.25),rgba(80,10,10,0.45)'},
+    {id:'d2',title:'1-комнатная квартира',jk:'ЖК «Riverside»',meta:'40 м² · 7 этаж · Вид на реку',price:'12 000 ₸',priceSub:'/ сутки',free:true,params:[{k:'Площадь',v:'40 м²'},{k:'Этаж',v:'7 из 12'},{k:'Комнат',v:'1'},{k:'Wi-Fi',v:'Есть'},{k:'Посуда',v:'Есть'},{k:'Парковка',v:'Есть'}],desc:'Красивый вид на реку. Полностью оборудована. Тихое место.',color:'135deg,rgba(30,60,120,0.25),rgba(5,20,60,0.45)'},
+    {id:'d3',title:'2-комнатная квартира',jk:'ЖК «Бизнес»',meta:'56 м² · 10 этаж · Деловой центр',price:'16 000 ₸',priceSub:'/ сутки',free:true,params:[{k:'Площадь',v:'56 м²'},{k:'Этаж',v:'10 из 18'},{k:'Комнат',v:'2'},{k:'Wi-Fi',v:'Есть'},{k:'Посуда',v:'Есть'},{k:'Парковка',v:'Есть'}],desc:'Апартаменты бизнес-класса. Идеально для командировок.',color:'135deg,rgba(40,80,40,0.25),rgba(10,30,10,0.45)'},
+    {id:'d4',title:'Люкс-студия',jk:'ЖК «Премиум»',meta:'45 м² · 18 этаж · Панорамный вид',price:'22 000 ₸',priceSub:'/ сутки',free:true,params:[{k:'Площадь',v:'45 м²'},{k:'Этаж',v:'18 из 22'},{k:'Комнат',v:'Студия'},{k:'Wi-Fi',v:'500 Мбит'},{k:'Посуда',v:'Есть'},{k:'Джакузи',v:'Есть'}],desc:'Панорамные окна, джакузи, премиальный интерьер. Незабываемые виды.',color:'135deg,rgba(80,40,120,0.25),rgba(30,10,60,0.45)'},
+  ],
+  sale: [
+    {id:'s1',title:'2-комнатная квартира',jk:'ЖК «Премиум»',meta:'58 м² · 9 этаж · Бостандыкский район',price:'28 500 000 ₸',priceSub:'',free:false,params:[{k:'Площадь',v:'58 м²'},{k:'Этаж',v:'9 из 20'},{k:'Комнат',v:'2'},{k:'Тип',v:'Бизнес-класс'},{k:'Год',v:'2022'},{k:'Комиссия',v:'1.5%'}],desc:'Продаётся двушка в ЖК бизнес-класса. Отличная локация, развитая инфраструктура.',color:'135deg,rgba(192,57,43,0.25),rgba(80,10,10,0.45)'},
+    {id:'s2',title:'3-комнатная квартира',jk:'ЖК «Новый»',meta:'82 м² · 6 этаж · Алмалинский район',price:'42 000 000 ₸',priceSub:'',free:false,params:[{k:'Площадь',v:'82 м²'},{k:'Этаж',v:'6 из 14'},{k:'Комнат',v:'3'},{k:'Тип',v:'Новостройка'},{k:'Год',v:'2023'},{k:'Комиссия',v:'1.5%'}],desc:'Большая трёшка в новом ЖК. Евроремонт, встроенная кухня, два санузла.',color:'135deg,rgba(20,60,120,0.25),rgba(5,20,60,0.45)'},
+    {id:'s3',title:'1-комнатная квартира',jk:'ЖК «Светлый»',meta:'42 м² · 3 этаж · Медеуский район',price:'18 900 000 ₸',priceSub:'',free:false,params:[{k:'Площадь',v:'42 м²'},{k:'Этаж',v:'3 из 10'},{k:'Комнат',v:'1'},{k:'Тип',v:'Стандарт'},{k:'Год',v:'2020'},{k:'Комиссия',v:'1.5%'}],desc:'Уютная однушка в тихом районе. Хорошее состояние, рядом школа и парк.',color:'135deg,rgba(20,100,40,0.25),rgba(5,40,10,0.45)'},
+    {id:'s4',title:'4-комнатная квартира',jk:'ЖК «Резиденция»',meta:'130 м² · 14 этаж · Медеуский район',price:'85 000 000 ₸',priceSub:'',free:false,params:[{k:'Площадь',v:'130 м²'},{k:'Этаж',v:'14 из 22'},{k:'Комнат',v:'4'},{k:'Тип',v:'Премиум'},{k:'Год',v:'2024'},{k:'Комиссия',v:'1.5%'}],desc:'Элитные апартаменты. Дизайнерский ремонт, панорамные окна, два паркинга.',color:'135deg,rgba(100,80,20,0.25),rgba(40,30,5,0.45)'},
+    {id:'s5',title:'2-комнатная квартира',jk:'ЖК «Алтын»',meta:'65 м² · 7 этаж · Наурызбайский район',price:'24 500 000 ₸',priceSub:'',free:false,params:[{k:'Площадь',v:'65 м²'},{k:'Этаж',v:'7 из 14'},{k:'Комнат',v:'2'},{k:'Тип',v:'Комфорт'},{k:'Год',v:'2021'},{k:'Комиссия',v:'1.5%'}],desc:'Двушка в комфорт-классе. Закрытый двор, детская площадка, охрана.',color:'135deg,rgba(60,20,100,0.25),rgba(20,5,40,0.45)'},
+    {id:'s6',title:'Студия',jk:'ЖК «Старт»',meta:'30 м² · 2 этаж · Турксибский район',price:'12 000 000 ₸',priceSub:'',free:false,params:[{k:'Площадь',v:'30 м²'},{k:'Этаж',v:'2 из 9'},{k:'Комнат',v:'Студия'},{k:'Тип',v:'Эконом'},{k:'Год',v:'2019'},{k:'Комиссия',v:'1.5%'}],desc:'Отличный вариант для первой покупки. Чистое состояние, можно въезжать сразу.',color:'135deg,rgba(20,80,80,0.25),rgba(5,30,30,0.45)'},
+  ]
+};
+
+// ========== RENDER CARDS ==========
+function renderCard(p, type) {
+  const badgeClass = type==='rent'?'badge-rent':type==='daily'?'badge-daily':'badge-sale';
+  const badgeText = type==='rent'?'Аренда':type==='daily'?'Посуточно':'Продажа';
+  return `
+    <div class="prop-card fade-in" onclick="openDetail('${p.id}','${type}')">
+      <div class="prop-img" style="background:linear-gradient(${p.color});">
+        <div class="prop-img-ph">${p.jk}</div>
+        <span class="prop-badge ${badgeClass}">${badgeText}</span>
+        ${p.free?'<span class="prop-badge-free">Без комиссии</span>':''}
+      </div>
+      <div class="prop-body">
+        <div class="prop-title">${p.title}</div>
+        <div class="prop-meta">${p.meta}</div>
+        <div class="prop-price-row">
+          <div class="prop-price">${p.price} <sub>${p.priceSub}</sub></div>
+          ${p.free?'<span class="prop-comm">0% комиссии</span>':'<span class="prop-comm" style="color:#e74c3c;">1.5%</span>'}
+        </div>
+        <button class="prop-btn">Подробнее →</button>
+      </div>
+    </div>`;
 }
 
-// ТАБЫ РЕГИСТРАЦИИ
-function switchRegTab(el, tab) {
-document.querySelectorAll('.reg-tab').forEach(t => t.classList.remove('active'));
-el.classList.add('active');
-document.getElementById('form-login').style.display = tab === 'login' ? 'block' : 'none';
-document.getElementById('form-signup').style.display = tab === 'signup' ? 'block' : 'none';
+function renderGrid(type) {
+  const grid = document.getElementById('grid-'+type);
+  if (!grid) return;
+  const items = properties[type];
+  if (!items || items.length === 0) {
+    grid.innerHTML = '<div class="no-items">Объекты не найдены</div>';
+    return;
+  }
+  grid.innerHTML = items.map(p => renderCard(p, type)).join('');
+  initFadeIn();
 }
 
-// МОДАЛЬНОЕ ОКНО
-function openModal() {
-document.getElementById('modal').classList.add('open');
-document.body.style.overflow = 'hidden';
-}
-function closeModal() {
-document.getElementById('modal').classList.remove('open');
-document.body.style.overflow = '';
-}
-function closeModalOutside(e) {
-if (e.target === document.getElementById('modal')) closeModal();
+// ========== FILTER ==========
+function filterProps(type) {
+  const grid = document.getElementById('grid-'+type);
+  let items = [...properties[type]];
+
+  if (type === 'rent') {
+    const dist = document.getElementById('rent-district').value;
+    const rooms = document.getElementById('rent-rooms').value;
+    const from = parseInt(document.getElementById('rent-from').value) || 0;
+    const to = parseInt(document.getElementById('rent-to').value) || Infinity;
+    if (dist) items = items.filter(p => p.meta.includes(dist));
+    if (rooms) items = items.filter(p => p.params[2].v === rooms);
+    items = items.filter(p => {
+      const n = parseInt(p.price.replace(/\D/g,''));
+      return n >= from && n <= to;
+    });
+  }
+
+  if (type === 'daily') {
+    const rooms = document.getElementById('daily-rooms').value;
+    const max = parseInt(document.getElementById('daily-max').value) || Infinity;
+    if (rooms) items = items.filter(p => p.params[2].v === rooms);
+    items = items.filter(p => parseInt(p.price.replace(/\D/g,'')) <= max);
+  }
+
+  if (type === 'sale') {
+    const dist = document.getElementById('sale-district').value;
+    const rooms = document.getElementById('sale-rooms').value;
+    const from = parseInt(document.getElementById('sale-from').value) || 0;
+    const to = parseInt(document.getElementById('sale-to').value) || Infinity;
+    if (dist) items = items.filter(p => p.meta.includes(dist));
+    if (rooms) items = items.filter(p => p.params[2].v === rooms);
+    items = items.filter(p => {
+      const n = parseInt(p.price.replace(/\D/g,''));
+      return n >= from && n <= to;
+    });
+  }
+
+  if (items.length === 0) {
+    grid.innerHTML = '<div class="no-items">По вашему запросу ничего не найдено</div>';
+  } else {
+    grid.innerHTML = items.map(p => renderCard(p, type)).join('');
+    initFadeIn();
+  }
+  showToast(`Найдено: ${items.length} объектов`);
 }
 
-// ПЛАВНАЯ АНИМАЦИЯ ПОЯВЛЕНИЯ
-const observer = new IntersectionObserver((entries) => {
-entries.forEach(entry => {
-if (entry.isIntersecting) {
-entry.target.style.opacity = '1';
-entry.target.style.transform = 'translateY(0)';
-}
-});
-}, { threshold: 0.1 });
+// ========== OPEN DETAIL ==========
+function openDetail(id, type) {
+  const p = properties[type].find(x => x.id === id);
+  if (!p) return;
 
-document.querySelectorAll('.feature-card, .property-card, .step, .domcom-feature').forEach(el => {
-el.style.opacity = '0';
-el.style.transform = 'translateY(24px)';
-el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
-observer.observe(el);
+  document.getElementById('detail-img').style.background = `linear-gradient(${p.color})`;
+  document.getElementById('detail-img').innerHTML = `<div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-family:'Cormorant Garamond',serif;font-size:22px;color:rgba(255,255,255,0.3);font-style:italic;">${p.jk}</div>`;
+
+  const typeLabel = type==='rent'?'Аренда':type==='daily'?'Посуточно':'Продажа';
+  const badgeClass = type==='rent'?'badge-rent':type==='daily'?'badge-daily':'badge-sale';
+  document.getElementById('detail-badges').innerHTML = `
+    <span class="detail-badge db-type ${badgeClass}">${typeLabel}</span>
+    ${p.free?'<span class="detail-badge db-free">Без комиссии</span>':'<span class="detail-badge" style="background:rgba(192,57,43,0.2);border:1px solid rgba(192,57,43,0.5);color:#e74c3c;">Комиссия 1.5%</span>'}
+  `;
+  document.getElementById('detail-title').textContent = p.title;
+  document.getElementById('detail-meta').textContent = p.meta;
+  document.getElementById('detail-price').textContent = p.price;
+  document.getElementById('detail-price-sub').textContent = p.priceSub;
+  document.getElementById('detail-params').innerHTML = p.params.map(pr=>`
+    <div class="dp">
+      <div class="dp-key">${pr.k}</div>
+      <div class="dp-val">${pr.v}</div>
+    </div>`).join('');
+  document.getElementById('detail-desc').textContent = p.desc;
+
+  openModal('detail');
+}
+
+// ========== PAGES ==========
+function showPage(name) {
+  document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+  document.querySelectorAll('.nav-links a').forEach(a => a.classList.remove('active'));
+
+  const page = document.getElementById('page-'+name);
+  if (page) page.classList.add('active');
+
+  const navEl = document.getElementById('nav-'+name);
+  if (navEl) navEl.classList.add('active');
+
+  window.scrollTo({top:0, behavior:'smooth'});
+
+  if (name === 'rent') renderGrid('rent');
+  if (name === 'daily') renderGrid('daily');
+  if (name === 'sale') renderGrid('sale');
+}
+
+// ========== MODALS ==========
+function openModal(name) {
+  document.getElementById('modal-'+name).classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+function closeModal(id) {
+  document.getElementById(id).classList.remove('open');
+  document.body.style.overflow = '';
+}
+function closeModalOutside(e, id) {
+  if (e.target === document.getElementById(id)) closeModal(id);
+}
+function switchModalTab(el, tab) {
+  document.querySelectorAll('.mt').forEach(t => t.classList.remove('active'));
+  el.classList.add('active');
+  document.getElementById('modal-login').style.display = tab==='login'?'block':'none';
+  document.getElementById('modal-signup').style.display = tab==='signup'?'block':'none';
+}
+
+// ========== AUTH ==========
+function doLogin() {
+  const phone = document.getElementById('auth-phone').value;
+  const pass = document.getElementById('auth-pass').value;
+  if (!phone || !pass) { showToast('Заполните все поля'); return; }
+  closeModal('modal-auth');
+  showToast('Добро пожаловать! 👋');
+}
+function doRegister() {
+  const name = document.getElementById('reg-name').value;
+  const phone = document.getElementById('reg-phone').value;
+  const pass = document.getElementById('reg-pass').value;
+  if (!name || !phone || !pass) { showToast('Заполните все поля'); return; }
+  closeModal('modal-auth');
+  showToast('Аккаунт создан! Добро пожаловать 🎉');
+}
+
+// ========== MANAGER FORM ==========
+function submitManager() {
+  const name = document.getElementById('mf-name').value;
+  const phone = document.getElementById('mf-phone').value;
+  const jk = document.getElementById('mf-jk').value;
+  if (!name || !phone || !jk) { showToast('Заполните обязательные поля'); return; }
+  document.getElementById('mf-name').value = '';
+  document.getElementById('mf-phone').value = '';
+  document.getElementById('mf-jk').value = '';
+  document.getElementById('mf-msg').value = '';
+  showToast('Заявка отправлена! Свяжемся в течение 2 часов ✅');
+}
+
+// ========== SCROLL ==========
+function scrollToSection(id) {
+  const el = document.getElementById(id);
+  if (el) el.scrollIntoView({behavior:'smooth'});
+}
+function scrollToManager() {
+  showPage('home');
+  setTimeout(() => scrollToSection('for-managers'), 300);
+}
+
+// ========== TOAST ==========
+function showToast(msg) {
+  const t = document.getElementById('toast');
+  t.textContent = msg;
+  t.classList.add('show');
+  setTimeout(() => t.classList.remove('show'), 3000);
+}
+
+// ========== FADE IN ==========
+function initFadeIn() {
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, {threshold: 0.1});
+  document.querySelectorAll('.fade-in:not(.visible)').forEach(el => observer.observe(el));
+}
+
+// ========== INIT ==========
+document.addEventListener('DOMContentLoaded', () => {
+  initFadeIn();
 });
 </script>
 </body>
