@@ -320,49 +320,175 @@ footer{display:none;}
 .fade-in{opacity:0;transform:translateY(20px);transition:opacity 0.7s ease,transform 0.7s ease;}
 .fade-in.visible{opacity:1;transform:translateY(0);}
 
-/* ========== RESPONSIVE ========== */
-@media(max-width:900px){
-  nav{padding:14px 20px;}
-  .nav-links{display:none;}
-  .hero h1{font-size:44px;}
-  .stats-bar{padding:16px 20px;flex-wrap:wrap;gap:16px;}
-  .catalog-section,.why-section,.domcom-section,.manager-section{padding:60px 20px;}
-  .prop-grid{grid-template-columns:1fr 1fr;}
-  .why-grid{grid-template-columns:1fr;}
-  .domcom-inner,.manager-inner{grid-template-columns:1fr;gap:40px;}
-  footer{padding:48px 20px 24px;}
-  .footer-grid{grid-template-columns:1fr 1fr;}
-  .prop-page-hero{padding:100px 20px 40px;}
-  .prop-page-content{padding:40px 20px 60px;}
+/* ========== BURGER MENU ========== */
+.burger {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  cursor: pointer;
+  padding: 4px;
+  background: none;
+  border: none;
 }
-@media(max-width:600px){
-  .prop-grid{grid-template-columns:1fr;}
-  .hero h1{font-size:36px;}
-  .detail-params{grid-template-columns:1fr 1fr;}
-  .footer-grid{grid-template-columns:1fr;}
+.burger span {
+  display: block;
+  width: 24px;
+  height: 2px;
+  background: #fff;
+  transition: all 0.3s;
+}
+.burger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+.burger.open span:nth-child(2) { opacity: 0; }
+.burger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+.mobile-menu {
+  display: none;
+  position: fixed;
+  top: 72px;
+  left: 0;
+  right: 0;
+  background: rgba(20,5,5,0.98);
+  z-index: 999;
+  padding: 20px;
+  border-bottom: 1px solid rgba(255,255,255,0.08);
+  flex-direction: column;
+  gap: 4px;
+}
+.mobile-menu.open { display: flex; }
+.mobile-menu a {
+  display: block;
+  padding: 14px 16px;
+  color: rgba(255,255,255,0.7);
+  font-size: 13px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  cursor: pointer;
+  border-radius: 6px;
+  transition: all 0.2s;
+  text-decoration: none;
+}
+.mobile-menu a:hover { background: rgba(255,255,255,0.06); color: #fff; }
+.mobile-menu .mob-btn {
+  margin-top: 8px;
+  padding: 14px 16px;
+  background: #c0392b;
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 13px;
+  letter-spacing: 1px;
+  cursor: pointer;
+  text-align: center;
+}
+
+@media(max-width:900px) {
+  nav { padding: 14px 20px; }
+  .nav-links { display: none; }
+  .nav-right { display: none; }
+  .burger { display: flex; }
+
+  .hero h1 { font-size: 38px; }
+  .hero-desc { font-size: 14px; }
+  .hero-pills { gap: 8px; }
+  .pill { padding: 10px 16px; font-size: 9px; }
+  .hero-btns { flex-direction: column; align-items: center; }
+  .btn-red, .btn-ghost { width: 100%; max-width: 280px; text-align: center; }
+
+  .stats-bar { padding: 16px 20px; flex-wrap: wrap; gap: 16px; }
+  .stat-item { width: calc(50% - 8px); }
+
+  .catalog-section, .why-section, .domcom-section, .manager-section { padding: 60px 20px; }
+
+  .why-grid { grid-template-columns: 1fr; }
+  .domcom-inner, .manager-inner { grid-template-columns: 1fr; gap: 40px; }
+  .domcom-img-wrap { height: 280px; }
+
+  .manager-form { padding: 24px; }
+
+  footer { padding: 48px 20px 24px; }
+  .footer-grid { grid-template-columns: 1fr 1fr; gap: 32px; }
+
+  .prop-page-hero { padding: 100px 20px 30px; }
+  .prop-page-hero h1 { font-size: 22px; }
+
+  .search-bar { padding: 16px 20px; flex-direction: column; }
+  .sg { min-width: unset; width: 100%; }
+
+  .prop-list-wrap { padding: 16px 16px 60px; }
+
+  .prop-card { flex-direction: column; }
+  .prop-img { width: 100%; min-width: unset; height: 180px; }
+  .prop-body { padding: 14px 16px; }
+  .prop-body-top { flex-direction: column; gap: 8px; }
+  .prop-price-col { text-align: left; }
+  .prop-body-bottom { flex-direction: column; align-items: flex-start; gap: 10px; }
+  .prop-btn { width: 100%; text-align: center; }
+
+  .modal-box { padding: 32px 24px; }
+  .detail-modal { max-width: 100%; margin: 0; border-radius: 0; }
+  .detail-img { height: 220px; }
+  .detail-body { padding: 24px 20px; }
+  .detail-params { grid-template-columns: 1fr 1fr; }
+  .detail-contact { flex-direction: column; }
+  .detail-contact .btn-red,
+  .detail-contact .btn-ghost { width: 100%; text-align: center; }
+
+  /* ADMIN */
+  #page-admin > div { padding: 80px 16px 60px; }
+  #page-admin [style*="grid-template-columns:repeat(3"] {
+    display: flex !important;
+    flex-direction: column !important;
+  }
+  #page-admin [style*="display:flex;justify-content:space-between"] {
+    flex-direction: column !important;
+    gap: 12px !important;
+  }
+}
+
+@media(max-width:600px) {
+  .hero h1 { font-size: 30px; }
+  .sec-title { font-size: 32px; }
+  .footer-grid { grid-template-columns: 1fr; }
+  .detail-params { grid-template-columns: 1fr 1fr; }
+  .stat-item { width: 100%; }
 }
 </style>
 </head>
 <body>
 
-<!-- NAV -->
 <nav id="mainNav">
   <a href="#" class="logo" onclick="showPage('home')">
     <img src="logo.png" alt="ДомКом" onerror="this.style.display='none'">
     <span class="logo-text">ДомКом</span>
   </a>
   <ul class="nav-links">
-    <li><a onclick="showPage('home')" id="nav-home" class="active">Главная</a></li>
-    <li><a onclick="showPage('rent')" id="nav-rent">Аренда</a></li>
-    <li><a onclick="showPage('daily')" id="nav-daily">Посуточно</a></li>
-    <li><a onclick="showPage('sale')" id="nav-sale">Купить / Продать</a></li>
+    <li><a onclick="showPage('home');closeMobileMenu()" id="nav-home" class="active">Главная</a></li>
+    <li><a onclick="showPage('rent');closeMobileMenu()" id="nav-rent">Аренда</a></li>
+    <li><a onclick="showPage('daily');closeMobileMenu()" id="nav-daily">Посуточно</a></li>
+    <li><a onclick="showPage('sale');closeMobileMenu()" id="nav-sale">Купить / Продать</a></li>
   </ul>
-<div class="nav-right">
+  <div class="nav-right">
     <button class="nav-btn" onclick="openModal('auth')">Войти</button>
     <button class="nav-btn nav-btn-main" onclick="scrollToManager()">Я — Домком</button>
     <button class="nav-btn" onclick="openAdmin()" style="border-color:rgba(255,255,255,0.1);color:rgba(255,255,255,0.4);font-size:9px;">⚙️ Админ</button>
-</div>
+  </div>
+  <!-- BURGER -->
+  <button class="burger" id="burger" onclick="toggleMobileMenu()">
+    <span></span><span></span><span></span>
+  </button>
 </nav>
+
+<!-- MOBILE MENU -->
+<div class="mobile-menu" id="mobileMenu">
+  <a onclick="showPage('home');closeMobileMenu()">🏠 Главная</a>
+  <a onclick="showPage('rent');closeMobileMenu()">🔑 Аренда</a>
+  <a onclick="showPage('daily');closeMobileMenu()">📅 Посуточно</a>
+  <a onclick="showPage('sale');closeMobileMenu()">💰 Купить / Продать</a>
+  <a onclick="openModal('auth');closeMobileMenu()">👤 Войти</a>
+  <a onclick="openAdmin();closeMobileMenu()">⚙️ Админ</a>
+  <button class="mob-btn" onclick="scrollToManager();closeMobileMenu()">Я — Домком</button>
+</div>
 
 <!-- ===================== HOME PAGE ===================== -->
 <div class="page active" id="page-home">
@@ -1268,6 +1394,25 @@ document.addEventListener('DOMContentLoaded', () => {
   // Переподключаем события после замены innerHTML
   initFadeIn();
   renderDistrictSelects();
+});
+  // ========== MOBILE MENU ==========
+function toggleMobileMenu() {
+  const menu = document.getElementById('mobileMenu');
+  const burger = document.getElementById('burger');
+  menu.classList.toggle('open');
+  burger.classList.toggle('open');
+}
+function closeMobileMenu() {
+  document.getElementById('mobileMenu').classList.remove('open');
+  document.getElementById('burger').classList.remove('open');
+}
+// Закрывать меню при клике вне
+document.addEventListener('click', function(e) {
+  const menu = document.getElementById('mobileMenu');
+  const burger = document.getElementById('burger');
+  if (menu && burger && !menu.contains(e.target) && !burger.contains(e.target)) {
+    closeMobileMenu();
+  }
 });
 </script>
   <!-- ===================== ADMIN PAGE ===================== -->
